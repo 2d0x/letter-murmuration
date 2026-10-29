@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мурмурация букв v5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&family=EB+Garamond:ital,wght@0,400;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Вечер над гнездовьем скворцов: светлая сумеречная растяжка неба, буквы — чернильные силуэты птиц.
+     Раскладка: шапка в 62 знака, ниже сетка сонетов колонками ~38 знаков. */
+  --sky-high: #93a6c4;
+  --sky-mid: #c7b2b8;
+  --sky-low: #efcfae;
+  --ink: #1c1922;
+  --ink-soft: #3f3a48;
+  --accent: #7a2633;
+  --font-display: 'Cormorant SC', 'Cormorant Garamond', Garamond, Georgia, serif;
+  --font-body: 'EB Garamond', Garamond, 'Times New Roman', serif;
+  color-scheme: light;
+}
+html { background: var(--sky-high); }
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.5;
+  background: linear-gradient(180deg, var(--sky-high) 0%, var(--sky-mid) 55%, var(--sky-low) 100%) fixed;
+}
+main { max-width: 1240px; margin: 0 auto; padding: 48px 24px 200px; display: grid; gap: 40px; }
+header { display: grid; gap: 10px; max-width: 62ch; }
+h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(40px, 6vw, 68px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-wrap: balance;
+}
+.lede { margin: 0; font-size: 18px; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 36px 44px; }
+.sonnet h2 {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 21px;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+.sonnet .l { display: block; }
+.sonnet .c { padding-left: 1.4em; }
+.repeat {
+  grid-column: 1 / -1;
+  padding-top: 12px;
+  border-top: 1px solid rgba(28, 25, 34, 0.25);
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+.preface { max-width: 760px; display: flow-root; }
+.preface h2 { margin: 0 0 10px; font-family: var(--font-display); font-weight: 500; font-size: 26px; letter-spacing: 0.06em; }
+.preface p, .preface ul, .preface ol { margin: 0 0 12px; }
+.preface a { color: #1f4e8c; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.preface a:focus-visible { outline: 2px solid #1f4e8c; outline-offset: 2px; }
+.preface code, .preface kbd { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px; background: rgba(255,255,255,.35); border-radius: 4px; padding: 0 4px; }
+.preface blockquote { margin: 0 0 14px; padding: 4px 0 4px 16px; border-left: 3px solid var(--accent); font-style: italic; }
+.preface cite { font-style: normal; font-size: 15px; color: var(--ink-soft); }
+.preface table { border-collapse: collapse; margin: 0 0 14px; font-size: 16px; }
+.preface caption { text-align: left; font-family: var(--font-display); letter-spacing: .06em; padding-bottom: 6px; }
+.preface th, .preface td { border: 1px solid rgba(28, 25, 34, 0.35); padding: 4px 10px; text-align: left; }
+.preface th { font-weight: 600; }
+.preface hr { border: 0; border-top: 1px solid rgba(28, 25, 34, 0.35); margin: 18px 0 0; clear: both; }
+.preface .fn { font-size: 15px; color: var(--ink-soft); }
+.fig { margin: 0 0 8px; display: grid; gap: 4px; justify-items: center; font-size: 14px; color: var(--ink-soft); }
+.fig img { max-width: 100%; height: auto; }
+.fig-right { float: right; margin-left: 24px; }
+.fig-left { float: left; margin-right: 24px; }
+.skyline { display: block; width: 100%; height: 150px; }
+.scale { --h1: clamp(40px, 6vw, 68px); display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .28em; margin: 0;
+  font-family: var(--font-display); font-weight: 500; line-height: 1; }
+.scale span { white-space: nowrap; }
+.scale-note { margin: 6px 0 0; font-size: 15px; color: var(--ink-soft); }
+footer { max-width: 62ch; font-size: 15px; color: var(--ink-soft); }
+footer p { margin: 0; }
+@media (max-width: 420px) {
+  main { padding: 32px 16px 260px; }
+  .fig-right, .fig-left { float: none; margin: 0 0 10px; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<main id="text">
+  <header>
+    <h1>Sonnets</h1>
+    <p class="lede">Двенадцать сонетов Шекспира. Каждая буква здесь — птица с телом и весом. Она держит дистанцию, летит как семь ближайших соседей и заранее уворачивается от столкновений. Над страницей кружит сокол, а картинки — препятствия.</p>
+  </header>
+  <section class="preface" aria-labelledby="pre-h">
+    <h2 id="pre-h">Об этих сонетах</h2>
+    <figure class="fig fig-right"><img src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 260%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%2258%22 y=%220%22 width=%224%22 height=%2216%22/%3E%3Cpolygon points=%2260,10 38,110 82,110%22/%3E%3Crect x=%2230%22 y=%22104%22 width=%2260%22 height=%228%22/%3E%3Crect x=%2235%22 y=%22110%22 width=%2250%22 height=%2295%22/%3E%3Crect x=%2220%22 y=%22200%22 width=%2280%22 height=%2260%22/%3E%3C/g%3E%3Cg fill=%22%23efcfae%22 opacity=%22.6%22%3E%3Crect x=%2252%22 y=%22128%22 width=%2216%22 height=%2228%22 rx=%228%22/%3E%3Crect x=%2238%22 y=%22216%22 width=%2212%22 height=%2222%22 rx=%226%22/%3E%3Crect x=%2270%22 y=%22216%22 width=%2212%22 height=%2222%22 rx=%226%22/%3E%3C/g%3E%3C/svg%3E" alt="Силуэт колокольни" width="120" height="260"><figcaption>Колокольня</figcaption></figure>
+    <p>Сонеты Шекспира — <strong>154 стихотворения</strong>, впервые изданные в <em>1609</em> году. Каждый написан <em>пятистопным ямбом</em> и рифмуется по схеме <code>abab cdcd efef gg</code>: три четверостишия и заключительное двустишие<sup>1</sup>. Здесь их двенадцать, среди них <a href="#s-LXXIII">LXXIII</a> про опустевшие ветви, где недавно пели птицы, и <a href="#s-XXIX">XXIX</a> про жаворонка на рассвете.</p>
+    <figure class="fig fig-left"><img src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 220%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%2292%22 y=%22130%22 width=%2216%22 height=%2290%22/%3E%3Ccircle cx=%22100%22 cy=%2278%22 r=%2260%22/%3E%3Ccircle cx=%2256%22 cy=%22108%22 r=%2238%22/%3E%3Ccircle cx=%22144%22 cy=%22106%22 r=%2240%22/%3E%3Ccircle cx=%22100%22 cy=%22126%22 r=%2234%22/%3E%3C/g%3E%3C/svg%3E" alt="Силуэт дерева" width="150" height="165"><figcaption>Дерево</figcaption></figure>
+    <p>Что проверить на этой странице:</p>
+    <ul>
+      <li>ссылки — их буквы летают своим цветом;</li>
+      <li><strong>жирные</strong> буквы тяжелее и медленнее, <em>курсив</em> ведёт себя как обычный текст;</li>
+      <li>картинки — препятствия: орда обтекает их, стая облетает;</li>
+      <li>линии, рамки таблиц и маркеры списков остаются на месте;</li>
+      <li>шкала кеглей под предисловием — от крошек до великанов в два и четыре заголовка.</li>
+    </ul>
+    <ol>
+      <li>Нажмите <kbd>2</kbd>: стая поднимется волной от курсора.</li>
+      <li>Проведите курсором сквозь стаю: тревога побежит по ней волной.</li>
+      <li>Нажмите <kbd>3</kbd> и уменьшите «Обзор зомби» в настройках.</li>
+    </ol>
+    <p class="fn"><sup>1</sup> Такую форму и называют шекспировским, или английским, сонетом.</p>
+    <blockquote>Пока живут дыханье и глаза, живут и строки — и дают жизнь тебе. <cite>— сонет XVIII, подстрочник</cite></blockquote>
+    <table>
+      <caption>Птицы в сонетах на странице</caption>
+      <thead><tr><th scope="col">Сонет</th><th scope="col">Начало</th><th scope="col">Птицы</th></tr></thead>
+      <tbody>
+        <tr><td><a href="#s-LXXIII">LXXIII</a></td><td>That time of year…</td><td>пели и замолкли</td></tr>
+        <tr><td><a href="#s-XXIX">XXIX</a></td><td>When, in disgrace…</td><td>жаворонок</td></tr>
+        <tr><td><a href="#s-XCVII">XCVII</a></td><td>How like a winter…</td><td>умолкли</td></tr>
+        <tr><td><a href="#s-XVIII">XVIII</a></td><td>Shall I compare…</td><td>нет</td></tr>
+      </tbody>
+    </table>
+    <hr>
+  </section>
+  <section aria-labelledby="scale-h">
+    <h2 id="scale-h" style="margin:0 0 8px;font-family:var(--font-display);font-weight:500;font-size:26px;letter-spacing:.06em">Шкала кеглей</h2>
+    <p class="scale" lang="en">
+      <span style="font-size:calc(var(--h1)*.2)">So</span>
+      <span style="font-size:calc(var(--h1)*.3)">long</span>
+      <span style="font-size:calc(var(--h1)*.45)">lives</span>
+      <span style="font-size:calc(var(--h1)*.65)">this,</span>
+      <span style="font-size:calc(var(--h1)*.85)">and</span>
+      <span style="font-size:var(--h1)">this</span>
+      <span style="font-size:calc(var(--h1)*1.5)">gives</span>
+      <span style="font-size:calc(var(--h1)*2)">life</span>
+      <span style="font-size:calc(var(--h1)*3)">to</span>
+      <span style="font-size:calc(var(--h1)*4)">thee</span>
+    </p>
+    <p class="scale-note">Последняя строка сонета XVIII: каждое слово крупнее предыдущего, от 0,2 до 4 размеров заголовка. Масса растёт с площадью буквы, поэтому великаны разгоняются дольше всех и расталкивают мелочь.</p>
+  </section>
+  <div class="grid" id="grid"></div>
+  <img class="skyline" src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 150%22 preserveAspectRatio=%22none%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%220%22 y=%2290%22 width=%22140%22 height=%2260%22/%3E%3Cpolygon points=%220,90 70,55 140,90%22/%3E%3Crect x=%22100%22 y=%2250%22 width=%2212%22 height=%2230%22/%3E%3Crect x=%22150%22 y=%2270%22 width=%22110%22 height=%2280%22/%3E%3Crect x=%22170%22 y=%2248%22 width=%2210%22 height=%2224%22/%3E%3Crect x=%22230%22 y=%2252%22 width=%2210%22 height=%2220%22/%3E%3Crect x=%22270%22 y=%22100%22 width=%2290%22 height=%2250%22/%3E%3Cpolygon points=%22270,100 315,72 360,100%22/%3E%3Crect x=%22370%22 y=%2260%22 width=%2270%22 height=%2290%22/%3E%3Cpolygon points=%22370,60 405,20 440,60%22/%3E%3Crect x=%22450%22 y=%2295%22 width=%22160%22 height=%2255%22/%3E%3Crect x=%22480%22 y=%2278%22 width=%2214%22 height=%2220%22/%3E%3Crect x=%22620%22 y=%2280%22 width=%22100%22 height=%2270%22/%3E%3Cpolygon points=%22620,80 670,58 720,80%22/%3E%3Crect x=%22730%22 y=%22105%22 width=%22120%22 height=%2245%22/%3E%3Cpolygon points=%22905,150 925,30 945,150%22/%3E%3Crect x=%22960%22 y=%2285%22 width=%22120%22 height=%2265%22/%3E%3Cpolygon points=%22960,85 1020,60 1080,85%22/%3E%3Crect x=%221040%22 y=%2256%22 width=%2210%22 height=%2220%22/%3E%3Crect x=%221090%22 y=%22100%22 width=%22110%22 height=%2250%22/%3E%3C/g%3E%3Cg stroke=%22%232a2533%22 stroke-width=%221.5%22 fill=%22none%22%3E%3Cpath d=%22M925 40 Q 820 70 700 60 M925 40 Q 1040 75 1200 65%22/%3E%3Cpath d=%22M913 80 h24 M916 60 h18%22/%3E%3C/g%3E%3C/svg%3E" alt="Крыши города" width="1200" height="150">
+  <footer>
+    <p>Правила стаи — Крейг Рейнольдс, 1987. Семь соседей — из наблюдений за скворцами над Римом (Ballerini и соавторы, 2008). Страх столкновения растёт по мере сокращения времени до него (Karamouzas, Skinner, Guy, 2014). Тела разводятся как в position-based dynamics для толп (Weiss и соавторы, 2017). Полёт с креном над гнездовьем — модель StarDisplay (Hemelrijk, Hildenbrandt), разворот волной — Attanasi и соавторы (2014), ответы стаи на атаки сокола — Storms и соавторы (2019). Взлёт волной подсмотрен у терминальной стаи cbirds. Облёт препятствий по лучу вперёд — Рейнольдс (1999). У каждого зомби своё время реакции и своя сторона обхода, поэтому толпа не качается разом.</p>
+  </footer>
+</main>
+
+<script>
+/*__ENGINE__*/
+</script>
+<script>
+(function () {
+  'use strict';
+  const SONNETS = [
+    ['LXXIII', [
+      'That time of year thou mayst in me behold',
+      'When yellow leaves, or none, or few, do hang',
+      'Upon those boughs which shake against the cold,',
+      'Bare ruin’d choirs, where late the sweet birds sang.',
+      'In me thou see’st the twilight of such day',
+      'As after sunset fadeth in the west,',
+      'Which by and by black night doth take away,',
+      'Death’s second self, that seals up all in rest.',
+      'In me thou see’st the glowing of such fire',
+      'That on the ashes of his youth doth lie,',
+      'As the death-bed whereon it must expire,',
+      'Consum’d with that which it was nourish’d by.',
+      'This thou perceiv’st, which makes thy love more strong,',
+      'To love that well which thou must leave ere long.']],
+    ['XXIX', [
+      'When, in disgrace with fortune and men’s eyes,',
+      'I all alone beweep my outcast state,',
+      'And trouble deaf heaven with my bootless cries,',
+      'And look upon myself and curse my fate,',
+      'Wishing me like to one more rich in hope,',
+      'Featur’d like him, like him with friends possess’d,',
+      'Desiring this man’s art and that man’s scope,',
+      'With what I most enjoy contented least;',
+      'Yet in these thoughts myself almost despising,',
+      'Haply I think on thee, and then my state,',
+      'Like to the lark at break of day arising',
+      'From sullen earth, sings hymns at heaven’s gate;',
+      'For thy sweet love remember’d such wealth brings',
+      'That then I scorn to change my state with kings.']],
+    ['XVIII', [
+      'Shall I compare thee to a summer’s day?',
+      'Thou art more lovely and more temperate:',
+      'Rough winds do shake the darling buds of May,',
+      'And summer’s lease hath all too short a date;',
+      'Sometime too hot the eye of heaven shines,',
+      'And often is his gold complexion dimm’d;',
+      'And every fair from fair sometime declines,',
+      'By chance or nature’s changing course untrimm’d;',
+      'But thy eternal summer shall not fade,',
+      'Nor lose possession of that fair thou ow’st;',
+      'Nor shall Death brag thou wander’st in his shade,',
+      'When in eternal lines to time thou grow’st:',
+      'So long as men can breathe or eyes can see,',
+      'So long lives this, and this gives life to thee.']],
+    ['XCVII', [
+      'How like a winter hath my absence been',
+      'From thee, the pleasure of the fleeting year!',
+      'What freezings have I felt, what dark days seen!',
+      'What old December’s bareness every where!',
+      'And yet this time removed was summer’s time,',
+      'The teeming autumn, big with rich increase,',
+      'Bearing the wanton burden of the prime,',
+      'Like widow’d wombs after their lords’ decease:',
+      'Yet this abundant issue seem’d to me',
+      'But hope of orphans and unfather’d fruit;',
+      'For summer and his pleasures wait on thee,',
+      'And, thou away, the very birds are mute;',
+      'Or, if they sing, ’tis with so dull a cheer',
+      'That leaves look pale, dreading the winter’s near.']],
+    ['CXVI', [
+      'Let me not to the marriage of true minds',
+      'Admit impediments. Love is not love',
+      'Which alters when it alteration finds,',
+      'Or bends with the remover to remove:',
+      'O no! it is an ever-fixed mark',
+      'That looks on tempests and is never shaken;',
+      'It is the star to every wandering bark,',
+      'Whose worth’s unknown, although his height be taken.',
+      'Love’s not Time’s fool, though rosy lips and cheeks',
+      'Within his bending sickle’s compass come;',
+      'Love alters not with his brief hours and weeks,',
+      'But bears it out even to the edge of doom.',
+      'If this be error and upon me proved,',
+      'I never writ, nor no man ever loved.']],
+    ['CXXX', [
+      'My mistress’ eyes are nothing like the sun;',
+      'Coral is far more red than her lips’ red;',
+      'If snow be white, why then her breasts are dun;',
+      'If hairs be wires, black wires grow on her head.',
+      'I have seen roses damask’d, red and white,',
+      'But no such roses see I in her cheeks;',
+      'And in some perfumes is there more delight',
+      'Than in the breath that from my mistress reeks.',
+      'I love to hear her speak, yet well I know',
+      'That music hath a far more pleasing sound;',
+      'I grant I never saw a goddess go;',
+      'My mistress, when she walks, treads on the ground:',
+      'And yet, by heaven, I think my love as rare',
+      'As any she belied with false compare.']],
+    ['XXX', [
+      'When to the sessions of sweet silent thought',
+      'I summon up remembrance of things past,',
+      'I sigh the lack of many a thing I sought,',
+      'And with old woes new wail my dear time’s waste:',
+      'Then can I drown an eye, unus’d to flow,',
+      'For precious friends hid in death’s dateless night,',
+      'And weep afresh love’s long since cancell’d woe,',
+      'And moan the expense of many a vanish’d sight:',
+      'Then can I grieve at grievances foregone,',
+      'And heavily from woe to woe tell o’er',
+      'The sad account of fore-bemoaned moan,',
+      'Which I new pay as if not paid before.',
+      'But if the while I think on thee, dear friend,',
+      'All losses are restor’d and sorrows end.']],
+    ['LV', [
+      'Not marble, nor the gilded monuments',
+      'Of princes, shall outlive this powerful rhyme;',
+      'But you shall shine more bright in these contents',
+      'Than unswept stone, besmear’d with sluttish time.',
+      'When wasteful war shall statues overturn,',
+      'And broils root out the work of masonry,',
+      'Nor Mars his sword nor war’s quick fire shall burn',
+      'The living record of your memory.',
+      '’Gainst death and all-oblivious enmity',
+      'Shall you pace forth; your praise shall still find room',
+      'Even in the eyes of all posterity',
+      'That wear this world out to the ending doom.',
+      'So, till the judgment that yourself arise,',
+      'You live in this, and dwell in lovers’ eyes.']],
+    ['LX', [
+      'Like as the waves make towards the pebbled shore,',
+      'So do our minutes hasten to their end;',
+      'Each changing place with that which goes before,',
+      'In sequent toil all forwards do contend.',
+      'Nativity, once in the main of light,',
+      'Crawls to maturity, wherewith being crown’d,',
+      'Crooked eclipses ’gainst his glory fight,',
+      'And Time that gave doth now his gift confound.',
+      'Time doth transfix the flourish set on youth',
+      'And delves the parallels in beauty’s brow,',
+      'Feeds on the rarities of nature’s truth,',
+      'And nothing stands but for his scythe to mow:',
+      'And yet to times in hope my verse shall stand,',
+      'Praising thy worth, despite his cruel hand.']],
+    ['LXV', [
+      'Since brass, nor stone, nor earth, nor boundless sea,',
+      'But sad mortality o’er-sways their power,',
+      'How with this rage shall beauty hold a plea,',
+      'Whose action is no stronger than a flower?',
+      'O, how shall summer’s honey breath hold out',
+      'Against the wrackful siege of battering days,',
+      'When rocks impregnable are not so stout,',
+      'Nor gates of steel so strong, but Time decays?',
+      'O fearful meditation! where, alack,',
+      'Shall Time’s best jewel from Time’s chest lie hid?',
+      'Or what strong hand can hold his swift foot back?',
+      'Or who his spoil of beauty can forbid?',
+      'O, none, unless this miracle have might,',
+      'That in black ink my love may still shine bright.']],
+    ['CIV', [
+      'To me, fair friend, you never can be old,',
+      'For as you were when first your eye I eyed,',
+      'Such seems your beauty still. Three winters cold',
+      'Have from the forests shook three summers’ pride,',
+      'Three beauteous springs to yellow autumn turn’d',
+      'In process of the seasons have I seen,',
+      'Three April perfumes in three hot Junes burn’d,',
+      'Since first I saw you fresh, which yet are green.',
+      'Ah! yet doth beauty, like a dial-hand,',
+      'Steal from his figure and no pace perceiv’d;',
+      'So your sweet hue, which methinks still doth stand,',
+      'Hath motion and mine eye may be deceiv’d:',
+      'For fear of which, hear this, thou age unbred;',
+      'Ere you were born was beauty’s summer dead.']],
+    ['I', [
+      'From fairest creatures we desire increase,',
+      'That thereby beauty’s rose might never die,',
+      'But as the riper should by time decease,',
+      'His tender heir might bear his memory:',
+      'But thou contracted to thine own bright eyes,',
+      'Feed’st thy light’s flame with self-substantial fuel,',
+      'Making a famine where abundance lies,',
+      'Thy self thy foe, to thy sweet self too cruel:',
+      'Thou that art now the world’s fresh ornament,',
+      'And only herald to the gaudy spring,',
+      'Within thine own bud buriest thy content,',
+      'And, tender churl, mak’st waste in niggarding:',
+      'Pity the world, or else this glutton be,',
+      'To eat the world’s due, by the grave and thee.']],
+  ];
+
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  function render(k) {
+    let html = '';
+    for (let r = 0; r < k; r++) {
+      if (r) html += '<div class="repeat">Повтор ' + (r + 1) + ' из ' + k + '</div>';
+      for (const [num, lines] of SONNETS) {
+        html += '<article class="sonnet"' + (r ? '' : ' id="s-' + num + '"') + '><h2>' + num + '</h2><div>' +
+          lines.map((l, i) => '<span class="l' + (i >= 12 ? ' c' : '') + '">' + esc(l) + '</span>').join('') +
+          '</div></article>';
+      }
+    }
+    document.getElementById('grid').innerHTML = html;
+  }
+
+  render(1);
+  const ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+  ready.then(() => {
+    const swarm = LetterSwarm.start(document.getElementById('text'), {
+      multipliers: [1, 2, 4, 8],
+      multiplier: 1,
+      accent: '#7a2633',
+      ink: '#1c1922',
+      onMultiplier(k) { render(k); swarm.rebuild(); },
+    });
+    window.swarm = swarm;
+  });
+})();
+</script>
+</body>
+</html>

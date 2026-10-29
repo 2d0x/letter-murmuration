@@ -1,0 +1,10 @@
+{
+  "name": "letter-murmuration",
+  "private": true,
+  "scripts": {
+    "bookmarklet": "node build_bm.js v6"
+  },
+  "devDependencies": {
+    "terser": "^5.31.0"
+  }
+}
