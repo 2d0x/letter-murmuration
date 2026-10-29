@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мурмурация букв</title>
+<meta name="description" content="Каждая буква веб-страницы становится существом с телом и массой и улетает стаей, как скворцы.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sky-high: #93a6c4;
+  --sky-mid: #c7b2b8;
+  --sky-low: #efcfae;
+  --ink: #1c1922;
+  --ink-soft: #3f3a48;
+  --accent: #7a2633;
+  --font-display: 'Cormorant SC', 'Cormorant Garamond', Garamond, Georgia, serif;
+  --font-body: 'EB Garamond', Garamond, 'Times New Roman', serif;
+  color-scheme: light;
+}
+html { background: var(--sky-high); }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.5;
+  background: linear-gradient(180deg, var(--sky-high) 0%, var(--sky-mid) 55%, var(--sky-low) 100%) fixed;
+}
+main { max-width: 760px; margin: 0 auto; padding: 72px 24px 56px; }
+h1 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(44px, 7vw, 76px);
+  letter-spacing: 0.04em;
+  line-height: 1.05;
+}
+.lede { margin: 0 0 36px; font-size: 20px; color: var(--ink-soft); font-style: italic; }
+.cta { display: flex; flex-wrap: wrap; gap: 16px; margin: 0 0 56px; }
+.cta a {
+  flex: 1 1 260px;
+  display: block;
+  padding: 20px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(28, 25, 34, 0.18);
+  transition: background .2s, transform .2s;
+}
+.cta a:hover, .cta a:focus-visible { background: rgba(255, 255, 255, 0.55); transform: translateY(-2px); }
+.cta a.primary { background: var(--accent); color: #fbeee6; border-color: var(--accent); }
+.cta a.primary:hover, .cta a.primary:focus-visible { background: #8e2f3e; }
+.cta b { display: block; font-family: var(--font-display); font-weight: 500; font-size: 30px; letter-spacing: 0.05em; }
+.cta span { font-size: 16px; opacity: .85; }
+h2 {
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 26px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+ol.versions { list-style: none; margin: 0 0 48px; padding: 0; }
+ol.versions li { display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(28, 25, 34, 0.15); }
+ol.versions a { font-family: var(--font-display); font-size: 22px; color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+ol.versions p { margin: 0; color: var(--ink-soft); }
+footer { font-size: 16px; color: var(--ink-soft); }
+footer a { color: #1f4e8c; text-underline-offset: 3px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Мурмурация букв</h1>
+  <p class="lede">Каждая буква веб-страницы становится существом с телом и массой — и улетает стаей, как скворцы.</p>
+
+  <nav class="cta">
+    <a class="primary" href="dist/v6/"><b>Открыть демо</b><span>Двенадцать сонетов Шекспира. Клавиши 1, 2, 3 — покой, мурмурация, орда.</span></a>
+    <a href="dist/bm/"><b>Поставить закладку</b><span>Перетащите кнопку на панель закладок — и мурмурация на любом сайте.</span></a>
+  </nav>
+
+  <h2>Все версии</h2>
+  <ol class="versions">
+    <li><a href="dist/v1/">v1</a><p>Буквы → боиды, режимы Покой / Мурмурация / Орда, WebGL2-рендер.</p></li>
+    <li><a href="dist/v2/">v2</a><p>Тела с объёмом и массой, честные K ближайших соседей, страх столкновения.</p></li>
+    <li><a href="dist/v3/">v3</a><p>Орда обходит сбоку, сокол-охотник, гнездовье, точкомёт.</p></li>
+    <li><a href="dist/v4/">v4</a><p>Взлёт волной от курсора, панель настроек, птицы предугадывают путь курсора.</p></li>
+    <li><a href="dist/v5/">v5</a><p>Орда без «линии» и синхронной тряски, птицы облетают картинки, буквы-великаны.</p></li>
+    <li><a href="dist/v6/">v6</a><p>Закладка на всю страницу, буквы просыпаются при прокрутке, посадка по дуге.</p></li>
+  </ol>
+
+  <footer>
+    Исходники, описание и литература — <a href="https://github.com/2d0x/letter-murmuration">github.com/2d0x/letter-murmuration</a>. Лицензия MIT.
+  </footer>
+</main>
+</body>
+</html>
