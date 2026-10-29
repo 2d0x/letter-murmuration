@@ -3,3 +3,4 @@ __pycache__/
 shots/
 *.txt
 !dist/bm/bookmarklet.txt
+!dist/bm/ru/bookmarklet.txt
