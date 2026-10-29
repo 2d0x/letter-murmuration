@@ -8,6 +8,8 @@ Every letter on a web page becomes a creature with a body and mass — and flies
 
 **▶ [Live demo](https://2d0x.github.io/letter-murmuration/dist/v6/)** · **🔖 [Install the bookmarklet](https://2d0x.github.io/letter-murmuration/dist/bm/)** · [All versions](https://2d0x.github.io/letter-murmuration/)
 
+The demo and the bookmarklet speak English; a Russian version is available too: [demo](https://2d0x.github.io/letter-murmuration/dist/v6/ru/) · [bookmarklet](https://2d0x.github.io/letter-murmuration/dist/bm/ru/).
+
 Three modes:
 
 - **Murmuration** — letters fly as a flock, like starlings.
@@ -23,9 +25,9 @@ Measured in headless Chromium (software WebGL, 1440×900). A normal computer wit
 
 ## Try it in 10 seconds
 
-1. **Bookmarklet.** Open the [install page](https://2d0x.github.io/letter-murmuration/dist/bm/) and drag the «Мурмурация» button to your bookmarks bar. Click it on any site. The whole script lives inside the bookmark (about 57 KB). Click again or press `Esc` to turn it off.
+1. **Bookmarklet.** Open the [install page](https://2d0x.github.io/letter-murmuration/dist/bm/) and drag the “Murmuration” button to your bookmarks bar. Click it on any site. The whole script lives inside the bookmark (about 61 KB). Click again or press `Esc` to turn it off.
 2. **Demo page.** Open the [demo](https://2d0x.github.io/letter-murmuration/dist/v6/): twelve Shakespeare sonnets with pictures, lists, a table and a type-size scale.
-3. **Console.** Copy [`dist/v6/letters-swarm-console-v6.js`](dist/v6/letters-swarm-console-v6.js) and paste it into the DevTools console on any page.
+3. **Console.** Copy [`dist/v6/letters-swarm-console-v6.js`](dist/v6/letters-swarm-console-v6.js) and paste it into the DevTools console on any page (Russian panel: [`dist/v6/ru/letters-swarm-console-v6.js`](dist/v6/ru/letters-swarm-console-v6.js)).
 
 ## Keys and settings
 
@@ -60,7 +62,7 @@ The **dynamics settings** panel has sliders for: horde base speed, zombie view r
 
 ## Version history
 
-Each version is its own folder `vN/` with a build in `dist/vN/`.
+Each version is its own folder `vN/` with a build in `dist/vN/`. v1–v5 are kept as originally built, with a Russian interface; v6 has English and Russian.
 
 | Version | What's new | Measurements |
 |---|---|---|
@@ -86,11 +88,11 @@ Each version is its own folder `vN/` with a build in `dist/vN/`.
 ## Build and tests
 
 ```bash
-python3 build.py v6                  # → dist/v6/index.html and the console script
-npm install && npm run bookmarklet   # → dist/bm/ (install page and bookmarklet.txt)
+python3 build.py v6                  # → dist/v6/ (English) and dist/v6/ru/ (Russian): demo page and console script
+npm install && npm run bookmarklet   # → dist/bm/ and dist/bm/ru/: install page and bookmarklet.txt
 ```
 
-Source layout: `vN/engine.js` — the engine, `vN/page.html` — demo page template, `vN/patch.py` — how the version was derived from the previous one. `bm/install.html` — bookmarklet install page template.
+Source layout: `vN/engine.js` — the engine, `vN/page.html` — demo page template, `vN/patch.py` — how the version was derived from the previous one. `bm/install.html` — bookmarklet install page template. Russian templates sit next to them as `v6/page.ru.html` and `bm/install.ru.html`; the panel language is set with the `lang` option of `LetterSwarm.start` (`'en'` by default, or `'ru'`).
 
 Tests use Python + Playwright and run from the repo root:
 

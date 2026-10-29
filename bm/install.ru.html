@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мурмурация букв — закладка</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&family=EB+Garamond:ital,wght@0,400;1,400&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sky-high: #93a6c4; --sky-mid: #c7b2b8; --sky-low: #efcfae;
+  --ink: #1c1922; --ink-soft: #3f3a48; --accent: #7a2633;
+  --font-display: 'Cormorant SC', Garamond, Georgia, serif;
+  --font-body: 'EB Garamond', Garamond, 'Times New Roman', serif;
+  --font-ui: 'IBM Plex Sans', system-ui, sans-serif;
+  color-scheme: light;
+}
+html { background: var(--sky-high); }
+body {
+  margin: 0; color: var(--ink); font-family: var(--font-body); font-size: 18px; line-height: 1.5;
+  background: linear-gradient(180deg, var(--sky-high) 0%, var(--sky-mid) 55%, var(--sky-low) 100%) fixed;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 160px; display: grid; gap: 32px; }
+h1 { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: clamp(36px, 5.5vw, 58px); line-height: 1.05; letter-spacing: .02em; }
+.lede { margin: 8px 0 0; color: var(--ink-soft); }
+.langs { margin: 8px 0 0; font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); }
+.langs a { color: #1f4e8c; }
+h2 { margin: 0 0 8px; font-family: var(--font-display); font-weight: 500; font-size: 24px; letter-spacing: .06em; }
+ol.steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 18px; counter-reset: s; }
+ol.steps > li { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; counter-increment: s; }
+ol.steps > li::before {
+  content: counter(s); font-family: var(--font-display); font-size: 26px; line-height: 38px; text-align: center;
+  width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(28,25,34,.35);
+}
+ol.steps p { margin: 6px 0 0; }
+kbd { font-family: var(--font-ui); font-size: 14px; padding: 1px 6px; border: 1px solid rgba(28,25,34,.35); border-bottom-width: 2px; border-radius: 5px; background: rgba(255,255,255,.4); }
+.bm {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 10px; padding: 12px 22px; border-radius: 999px;
+  background: var(--ink); color: #f6efe6; text-decoration: none; font-family: var(--font-ui); font-weight: 600; font-size: 17px;
+  box-shadow: 0 6px 18px rgba(28,25,34,.25); cursor: grab; user-select: none;
+}
+.bm:active { cursor: grabbing; }
+.bm:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.bm svg { width: 22px; height: 22px; }
+.note { margin: 8px 0 0; font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); min-height: 1.4em; }
+.note.ok { color: #1f5c3a; }
+button {
+  font-family: var(--font-ui); font-size: 15px; font-weight: 600; padding: 9px 16px; border-radius: 8px; cursor: pointer;
+  border: 1px solid rgba(28,25,34,.45); background: rgba(255,255,255,.45); color: var(--ink);
+}
+button:hover { background: rgba(255,255,255,.7); }
+.card { background: rgba(255,255,255,.28); border: 1px solid rgba(28,25,34,.15); border-radius: 12px; padding: 18px 20px; }
+.card p { margin: 0 0 10px; }
+.card p:last-child { margin-bottom: 0; }
+textarea { display: none; width: 100%; height: 90px; margin-top: 10px; font-family: ui-monospace, monospace; font-size: 12px; box-sizing: border-box; }
+main { font-size: 20px; }
+main h3 { margin: 0 0 6px; font-family: var(--font-display); font-weight: 500; font-size: 22px; letter-spacing: .1em; color: var(--accent); }
+main p { margin: 0; }
+.try-row { color: var(--ink); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+footer { font-family: var(--font-ui); font-size: 14px; color: var(--ink-soft); }
+footer ul { margin: 0; padding-left: 18px; }
+@media (max-width: 480px) { .wrap { padding: 32px 16px 120px; } ol.steps > li { grid-template-columns: 32px 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Мурмурация букв — закладка</h1>
+    <p class="lede">Кнопка на панели закладок, которая превращает все буквы открытой страницы в стаю скворцов или орду зомби. Ставится один раз, дальше — один клик на любой странице.</p>
+    <p class="langs"><a href="../" hreflang="en" lang="en">English</a> · Русский</p>
+  </header>
+
+  <section aria-labelledby="h-install">
+    <h2 id="h-install">Как поставить</h2>
+    <ol class="steps">
+      <li><div>Включите панель закладок: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd>, на Mac — <kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd>.</div></li>
+      <li><div>Перетащите эту кнопку мышью на панель закладок:<br>
+        <a id="bm" class="bm ls-ui" href="#" draggable="true" title="Перетащите на панель закладок"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 13c3-1 5-4 7-4 1.6 0 2.3 1.2 3 2 1.2-2.4 3.5-4.5 7-5l-2.6 3.3L21 9c-2 .8-3.4 2.4-4.6 4.4C15 16 12.7 18 9 18c2-1 3-2.4 3.4-3.6C10.6 15.6 6.6 15.8 2 13z"/></svg>Мурмурация</a>
+        <p class="note" id="bm-note" role="status">Нажимать её здесь не обязательно — главное перетащить.</p></div></li>
+      <li><div>Откройте любую статью Википедии и нажмите закладку. Справа внизу появится панель: <kbd>2</kbd> — стая, <kbd>3</kbd> — орда, <kbd>1</kbd> — буквы садятся на место. Выключить — <kbd>Esc</kbd> или ещё раз нажать закладку.</div></li>
+    </ol>
+  </section>
+
+  <section class="card" aria-labelledby="h-copy">
+    <h2 id="h-copy">Не перетаскивается?</h2>
+    <p>Скопируйте код, затем щёлкните правой кнопкой по панели закладок → «Добавить страницу…» → название «Мурмурация», а в поле адреса вставьте код.</p>
+    <p><button id="copy" type="button">Скопировать код</button> <span class="note" id="copy-note" role="status"></span></p>
+    <p class="note">Весь скрипт хранится в самой закладке, __SIZE__ КБ: ничего не скачивается и никуда не отправляется.</p>
+    <textarea id="code" readonly aria-label="Код закладки"></textarea>
+  </section>
+
+  <section aria-labelledby="h-try">
+    <h2 id="h-try">Попробовать прямо здесь</h2>
+    <p style="margin:0 0 12px">Взлетит вся эта страница — так же закладка сработает на любом сайте.</p>
+    <div class="try-row ls-ui"><button id="try" type="button">Запустить на этой странице</button><span class="note" id="try-note" role="status"></span></div>
+    <main>
+      <h3>LXXIII</h3>
+      <p>That time of year thou mayst in me behold<br>
+      When yellow leaves, or none, or few, do hang<br>
+      Upon those boughs which shake against the cold,<br>
+      Bare ruined choirs, where late the sweet birds sang.<br>
+      In me thou see’st the twilight of such day<br>
+      As after sunset fadeth in the west,<br>
+      Which by and by black night doth take away,<br>
+      Death’s second self, that seals up all in rest.<br>
+      In me thou see’st the glowing of such fire<br>
+      That on the ashes of his youth doth lie,<br>
+      As the death-bed whereon it must expire,<br>
+      Consumed with that which it was nourished by.<br>
+      &nbsp;&nbsp;This thou perceiv’st, which makes thy love more strong,<br>
+      &nbsp;&nbsp;To love that well which thou must leave ere long.</p>
+    </main>
+  </section>
+
+  <footer>
+    <ul>
+      <li>Работает в Chrome, Edge и Яндекс Браузере на компьютере.</li>
+      <li>Сайты со строгой защитой (Google, YouTube, GitHub) могут не пустить скрипт — тогда закладка просто ничего не сделает.</li>
+      <li>Когда выйдет новая версия, кнопку нужно перетащить заново: старая закладка продолжит работать как была.</li>
+    </ul>
+  </footer>
+</div>
+<script>
+/*__RUN__*/
+</script>
+<script>
+/*__BM__*/
+(function () {
+  const a = document.getElementById('bm');
+  a.href = BM;
+  const note = document.getElementById('bm-note');
+  const tryNote = document.getElementById('try-note');
+  const running = () => !!(window.LetterSwarm && window.LetterSwarm.__instance);
+  const sync = () => {
+    tryBtn.textContent = running() ? 'Выключить' : 'Запустить на этой странице';
+    tryNote.textContent = running() ? 'Нажмите 2 или 3 на клавиатуре. Esc — выключить.' : '';
+  };
+  const tryBtn = document.getElementById('try');
+  const run = () => { try { window.__runBM(); } catch (e) { tryNote.textContent = 'Не запустилось: ' + e.message; } sync(); };
+  tryBtn.addEventListener('click', run);
+  // нажатие на саму кнопку тоже показывает, как это работает, но главное — перетащить
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    run();
+    note.textContent = 'Работает. Теперь перетащите кнопку на панель закладок — и запускайте на любом сайте.';
+    note.className = 'note ok';
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setTimeout(sync, 0); });
+  const ta = document.getElementById('code');
+  ta.value = BM;
+  document.getElementById('copy').addEventListener('click', async () => {
+    const cn = document.getElementById('copy-note');
+    try {
+      await navigator.clipboard.writeText(BM);
+      cn.textContent = 'Скопировано.';
+      cn.className = 'note ok';
+    } catch (e) {
+      ta.style.display = 'block'; ta.focus(); ta.select();
+      cn.textContent = 'Браузер не дал скопировать — код выделен ниже, нажмите Ctrl+C.';
+      cn.className = 'note';
+    }
+  });
+})();
+</script>
+</body>
+</html>

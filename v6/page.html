@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Мурмурация букв v6</title>
+<title>Letter Murmuration v6</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&family=EB+Garamond:ital,wght@0,400;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -43,6 +43,8 @@ h1 {
   text-wrap: balance;
 }
 .lede { margin: 0; font-size: 18px; color: var(--ink-soft); }
+.langs { margin: 8px 0 0; font-size: 15px; color: var(--ink-soft); }
+.langs a { color: #1f4e8c; text-underline-offset: 3px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 36px 44px; }
 .sonnet h2 {
   margin: 0 0 6px;
@@ -99,43 +101,44 @@ footer p { margin: 0; }
 <main id="text">
   <header>
     <h1>Sonnets</h1>
-    <p class="lede">Двенадцать сонетов Шекспира. Каждая буква здесь — птица с телом и весом. Она держит дистанцию, летит как семь ближайших соседей и заранее уворачивается от столкновений. Над страницей кружит сокол, а картинки — препятствия.</p>
+    <p class="lede">Twelve sonnets by Shakespeare. Every letter here is a bird with a body and weight. It keeps its distance, flies like its seven nearest neighbours and dodges collisions in advance. A falcon circles above the page, and the pictures are obstacles.</p>
+    <p class="langs">English · <a href="ru/" hreflang="ru" lang="ru">Русский</a></p>
   </header>
   <section class="preface" aria-labelledby="pre-h">
-    <h2 id="pre-h">Об этих сонетах</h2>
-    <figure class="fig fig-right"><img src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 260%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%2258%22 y=%220%22 width=%224%22 height=%2216%22/%3E%3Cpolygon points=%2260,10 38,110 82,110%22/%3E%3Crect x=%2230%22 y=%22104%22 width=%2260%22 height=%228%22/%3E%3Crect x=%2235%22 y=%22110%22 width=%2250%22 height=%2295%22/%3E%3Crect x=%2220%22 y=%22200%22 width=%2280%22 height=%2260%22/%3E%3C/g%3E%3Cg fill=%22%23efcfae%22 opacity=%22.6%22%3E%3Crect x=%2252%22 y=%22128%22 width=%2216%22 height=%2228%22 rx=%228%22/%3E%3Crect x=%2238%22 y=%22216%22 width=%2212%22 height=%2222%22 rx=%226%22/%3E%3Crect x=%2270%22 y=%22216%22 width=%2212%22 height=%2222%22 rx=%226%22/%3E%3C/g%3E%3C/svg%3E" alt="Силуэт колокольни" width="120" height="260"><figcaption>Колокольня</figcaption></figure>
-    <p>Сонеты Шекспира — <strong>154 стихотворения</strong>, впервые изданные в <em>1609</em> году. Каждый написан <em>пятистопным ямбом</em> и рифмуется по схеме <code>abab cdcd efef gg</code>: три четверостишия и заключительное двустишие<sup>1</sup>. Здесь их двенадцать, среди них <a href="#s-LXXIII">LXXIII</a> про опустевшие ветви, где недавно пели птицы, и <a href="#s-XXIX">XXIX</a> про жаворонка на рассвете.</p>
-    <figure class="fig fig-left"><img src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 220%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%2292%22 y=%22130%22 width=%2216%22 height=%2290%22/%3E%3Ccircle cx=%22100%22 cy=%2278%22 r=%2260%22/%3E%3Ccircle cx=%2256%22 cy=%22108%22 r=%2238%22/%3E%3Ccircle cx=%22144%22 cy=%22106%22 r=%2240%22/%3E%3Ccircle cx=%22100%22 cy=%22126%22 r=%2234%22/%3E%3C/g%3E%3C/svg%3E" alt="Силуэт дерева" width="150" height="165"><figcaption>Дерево</figcaption></figure>
-    <p>Что проверить на этой странице:</p>
+    <h2 id="pre-h">About these sonnets</h2>
+    <figure class="fig fig-right"><img src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 260%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%2258%22 y=%220%22 width=%224%22 height=%2216%22/%3E%3Cpolygon points=%2260,10 38,110 82,110%22/%3E%3Crect x=%2230%22 y=%22104%22 width=%2260%22 height=%228%22/%3E%3Crect x=%2235%22 y=%22110%22 width=%2250%22 height=%2295%22/%3E%3Crect x=%2220%22 y=%22200%22 width=%2280%22 height=%2260%22/%3E%3C/g%3E%3Cg fill=%22%23efcfae%22 opacity=%22.6%22%3E%3Crect x=%2252%22 y=%22128%22 width=%2216%22 height=%2228%22 rx=%228%22/%3E%3Crect x=%2238%22 y=%22216%22 width=%2212%22 height=%2222%22 rx=%226%22/%3E%3Crect x=%2270%22 y=%22216%22 width=%2212%22 height=%2222%22 rx=%226%22/%3E%3C/g%3E%3C/svg%3E" alt="Bell tower silhouette" width="120" height="260"><figcaption>Bell tower</figcaption></figure>
+    <p>Shakespeare's sonnets are <strong>154 poems</strong>, first published in <em>1609</em>. Each is written in <em>iambic pentameter</em> and rhymes <code>abab cdcd efef gg</code>: three quatrains and a closing couplet<sup>1</sup>. Twelve of them are here, among them <a href="#s-LXXIII">LXXIII</a> about bare boughs where birds sang not long ago, and <a href="#s-XXIX">XXIX</a> about the lark at break of day.</p>
+    <figure class="fig fig-left"><img src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 220%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%2292%22 y=%22130%22 width=%2216%22 height=%2290%22/%3E%3Ccircle cx=%22100%22 cy=%2278%22 r=%2260%22/%3E%3Ccircle cx=%2256%22 cy=%22108%22 r=%2238%22/%3E%3Ccircle cx=%22144%22 cy=%22106%22 r=%2240%22/%3E%3Ccircle cx=%22100%22 cy=%22126%22 r=%2234%22/%3E%3C/g%3E%3C/svg%3E" alt="Tree silhouette" width="150" height="165"><figcaption>Tree</figcaption></figure>
+    <p>Things to try on this page:</p>
     <ul>
-      <li>ссылки — их буквы летают своим цветом;</li>
-      <li><strong>жирные</strong> буквы тяжелее и медленнее, <em>курсив</em> ведёт себя как обычный текст;</li>
-      <li>картинки — препятствия: орда обтекает их, стая облетает;</li>
-      <li>линии, рамки таблиц и маркеры списков остаются на месте;</li>
-      <li>шкала кеглей под предисловием — от крошек до великанов в два и четыре заголовка.</li>
+      <li>links — their letters fly in their own colour;</li>
+      <li><strong>bold</strong> letters are heavier and slower, <em>italics</em> behave like regular text;</li>
+      <li>pictures are obstacles: the horde flows around them, the flock flies around them;</li>
+      <li>rules, table borders and list markers stay in place;</li>
+      <li>the type-size scale below the preface — from tiny letters to giants two and four times the heading.</li>
     </ul>
     <ol>
-      <li>Нажмите <kbd>2</kbd>: стая поднимется волной от курсора.</li>
-      <li>Проведите курсором сквозь стаю: тревога побежит по ней волной.</li>
-      <li>Нажмите <kbd>3</kbd> и уменьшите «Обзор зомби» в настройках.</li>
+      <li>Press <kbd>2</kbd>: the flock takes off in a wave from the cursor.</li>
+      <li>Sweep the cursor through the flock: alarm runs through it as a wave.</li>
+      <li>Press <kbd>3</kbd> and lower “Zombie view range” in the settings.</li>
     </ol>
-    <p class="fn"><sup>1</sup> Такую форму и называют шекспировским, или английским, сонетом.</p>
-    <blockquote>Пока живут дыханье и глаза, живут и строки — и дают жизнь тебе. <cite>— сонет XVIII, подстрочник</cite></blockquote>
+    <p class="fn"><sup>1</sup> This form is known as the Shakespearean, or English, sonnet.</p>
+    <blockquote>So long as men can breathe, or eyes can see, so long lives this, and this gives life to thee. <cite>— Sonnet XVIII</cite></blockquote>
     <table>
-      <caption>Птицы в сонетах на странице</caption>
-      <thead><tr><th scope="col">Сонет</th><th scope="col">Начало</th><th scope="col">Птицы</th></tr></thead>
+      <caption>Birds in the sonnets on this page</caption>
+      <thead><tr><th scope="col">Sonnet</th><th scope="col">Opening</th><th scope="col">Birds</th></tr></thead>
       <tbody>
-        <tr><td><a href="#s-LXXIII">LXXIII</a></td><td>That time of year…</td><td>пели и замолкли</td></tr>
-        <tr><td><a href="#s-XXIX">XXIX</a></td><td>When, in disgrace…</td><td>жаворонок</td></tr>
-        <tr><td><a href="#s-XCVII">XCVII</a></td><td>How like a winter…</td><td>умолкли</td></tr>
-        <tr><td><a href="#s-XVIII">XVIII</a></td><td>Shall I compare…</td><td>нет</td></tr>
+        <tr><td><a href="#s-LXXIII">LXXIII</a></td><td>That time of year…</td><td>sang, now silent</td></tr>
+        <tr><td><a href="#s-XXIX">XXIX</a></td><td>When, in disgrace…</td><td>the lark</td></tr>
+        <tr><td><a href="#s-XCVII">XCVII</a></td><td>How like a winter…</td><td>fallen silent</td></tr>
+        <tr><td><a href="#s-XVIII">XVIII</a></td><td>Shall I compare…</td><td>none</td></tr>
       </tbody>
     </table>
     <hr>
   </section>
   <section aria-labelledby="scale-h">
-    <h2 id="scale-h" style="margin:0 0 8px;font-family:var(--font-display);font-weight:500;font-size:26px;letter-spacing:.06em">Шкала кеглей</h2>
-    <p class="scale" lang="en">
+    <h2 id="scale-h" style="margin:0 0 8px;font-family:var(--font-display);font-weight:500;font-size:26px;letter-spacing:.06em">Type-size scale</h2>
+    <p class="scale">
       <span style="font-size:calc(var(--h1)*.2)">So</span>
       <span style="font-size:calc(var(--h1)*.3)">long</span>
       <span style="font-size:calc(var(--h1)*.45)">lives</span>
@@ -147,12 +150,12 @@ footer p { margin: 0; }
       <span style="font-size:calc(var(--h1)*3)">to</span>
       <span style="font-size:calc(var(--h1)*4)">thee</span>
     </p>
-    <p class="scale-note">Последняя строка сонета XVIII: каждое слово крупнее предыдущего, от 0,2 до 4 размеров заголовка. Масса растёт с площадью буквы, поэтому великаны разгоняются дольше всех и расталкивают мелочь.</p>
+    <p class="scale-note">The last line of Sonnet XVIII: each word is larger than the one before, from 0.2 to 4 times the heading size. Mass grows with a letter's area, so giants take the longest to speed up and push the small ones aside.</p>
   </section>
   <div class="grid" id="grid"></div>
-  <img class="skyline" src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 150%22 preserveAspectRatio=%22none%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%220%22 y=%2290%22 width=%22140%22 height=%2260%22/%3E%3Cpolygon points=%220,90 70,55 140,90%22/%3E%3Crect x=%22100%22 y=%2250%22 width=%2212%22 height=%2230%22/%3E%3Crect x=%22150%22 y=%2270%22 width=%22110%22 height=%2280%22/%3E%3Crect x=%22170%22 y=%2248%22 width=%2210%22 height=%2224%22/%3E%3Crect x=%22230%22 y=%2252%22 width=%2210%22 height=%2220%22/%3E%3Crect x=%22270%22 y=%22100%22 width=%2290%22 height=%2250%22/%3E%3Cpolygon points=%22270,100 315,72 360,100%22/%3E%3Crect x=%22370%22 y=%2260%22 width=%2270%22 height=%2290%22/%3E%3Cpolygon points=%22370,60 405,20 440,60%22/%3E%3Crect x=%22450%22 y=%2295%22 width=%22160%22 height=%2255%22/%3E%3Crect x=%22480%22 y=%2278%22 width=%2214%22 height=%2220%22/%3E%3Crect x=%22620%22 y=%2280%22 width=%22100%22 height=%2270%22/%3E%3Cpolygon points=%22620,80 670,58 720,80%22/%3E%3Crect x=%22730%22 y=%22105%22 width=%22120%22 height=%2245%22/%3E%3Cpolygon points=%22905,150 925,30 945,150%22/%3E%3Crect x=%22960%22 y=%2285%22 width=%22120%22 height=%2265%22/%3E%3Cpolygon points=%22960,85 1020,60 1080,85%22/%3E%3Crect x=%221040%22 y=%2256%22 width=%2210%22 height=%2220%22/%3E%3Crect x=%221090%22 y=%22100%22 width=%22110%22 height=%2250%22/%3E%3C/g%3E%3Cg stroke=%22%232a2533%22 stroke-width=%221.5%22 fill=%22none%22%3E%3Cpath d=%22M925 40 Q 820 70 700 60 M925 40 Q 1040 75 1200 65%22/%3E%3Cpath d=%22M913 80 h24 M916 60 h18%22/%3E%3C/g%3E%3C/svg%3E" alt="Крыши города" width="1200" height="150">
+  <img class="skyline" src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 150%22 preserveAspectRatio=%22none%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%220%22 y=%2290%22 width=%22140%22 height=%2260%22/%3E%3Cpolygon points=%220,90 70,55 140,90%22/%3E%3Crect x=%22100%22 y=%2250%22 width=%2212%22 height=%2230%22/%3E%3Crect x=%22150%22 y=%2270%22 width=%22110%22 height=%2280%22/%3E%3Crect x=%22170%22 y=%2248%22 width=%2210%22 height=%2224%22/%3E%3Crect x=%22230%22 y=%2252%22 width=%2210%22 height=%2220%22/%3E%3Crect x=%22270%22 y=%22100%22 width=%2290%22 height=%2250%22/%3E%3Cpolygon points=%22270,100 315,72 360,100%22/%3E%3Crect x=%22370%22 y=%2260%22 width=%2270%22 height=%2290%22/%3E%3Cpolygon points=%22370,60 405,20 440,60%22/%3E%3Crect x=%22450%22 y=%2295%22 width=%22160%22 height=%2255%22/%3E%3Crect x=%22480%22 y=%2278%22 width=%2214%22 height=%2220%22/%3E%3Crect x=%22620%22 y=%2280%22 width=%22100%22 height=%2270%22/%3E%3Cpolygon points=%22620,80 670,58 720,80%22/%3E%3Crect x=%22730%22 y=%22105%22 width=%22120%22 height=%2245%22/%3E%3Cpolygon points=%22905,150 925,30 945,150%22/%3E%3Crect x=%22960%22 y=%2285%22 width=%22120%22 height=%2265%22/%3E%3Cpolygon points=%22960,85 1020,60 1080,85%22/%3E%3Crect x=%221040%22 y=%2256%22 width=%2210%22 height=%2220%22/%3E%3Crect x=%221090%22 y=%22100%22 width=%22110%22 height=%2250%22/%3E%3C/g%3E%3Cg stroke=%22%232a2533%22 stroke-width=%221.5%22 fill=%22none%22%3E%3Cpath d=%22M925 40 Q 820 70 700 60 M925 40 Q 1040 75 1200 65%22/%3E%3Cpath d=%22M913 80 h24 M916 60 h18%22/%3E%3C/g%3E%3C/svg%3E" alt="City rooftops" width="1200" height="150">
   <footer>
-    <p>Правила стаи — Крейг Рейнольдс, 1987. Семь соседей — из наблюдений за скворцами над Римом (Ballerini и соавторы, 2008). Страх столкновения растёт по мере сокращения времени до него (Karamouzas, Skinner, Guy, 2014). Тела разводятся как в position-based dynamics для толп (Weiss и соавторы, 2017). Полёт с креном над гнездовьем — модель StarDisplay (Hemelrijk, Hildenbrandt), разворот волной — Attanasi и соавторы (2014), ответы стаи на атаки сокола — Storms и соавторы (2019). Взлёт волной подсмотрен у терминальной стаи cbirds. Облёт препятствий по лучу вперёд — Рейнольдс (1999). У каждого зомби своё время реакции и своя сторона обхода, поэтому толпа не качается разом.</p>
+    <p>Flocking rules — Craig Reynolds, 1987. Seven neighbours — from observations of starlings over Rome (Ballerini et al., 2008). Fear of collision grows as the time to it shrinks (Karamouzas, Skinner, Guy, 2014). Bodies are separated as in position-based dynamics for crowds (Weiss et al., 2017). Banked flight above the roost — the StarDisplay model (Hemelrijk, Hildenbrandt); turning waves — Attanasi et al. (2014); the flock's responses to falcon attacks — Storms et al. (2019). The take-off wave was borrowed from the terminal flock cbirds. Obstacle avoidance by a ray cast ahead — Reynolds (1999). Every zombie has its own reaction time and its own detour side, so the crowd doesn't sway in unison.</p>
   </footer>
 </main>
 
@@ -349,7 +352,7 @@ footer p { margin: 0; }
   function render(k) {
     let html = '';
     for (let r = 0; r < k; r++) {
-      if (r) html += '<div class="repeat">Повтор ' + (r + 1) + ' из ' + k + '</div>';
+      if (r) html += '<div class="repeat">Repeat ' + (r + 1) + ' of ' + k + '</div>';
       for (const [num, lines] of SONNETS) {
         html += '<article class="sonnet"' + (r ? '' : ' id="s-' + num + '"') + '><h2>' + num + '</h2><div>' +
           lines.map((l, i) => '<span class="l' + (i >= 12 ? ' c' : '') + '">' + esc(l) + '</span>').join('') +

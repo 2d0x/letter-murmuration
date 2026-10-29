@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Мурмурация букв v6</title>
+<title>Letter Murmuration v6</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&family=EB+Garamond:ital,wght@0,400;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -43,6 +43,8 @@ h1 {
   text-wrap: balance;
 }
 .lede { margin: 0; font-size: 18px; color: var(--ink-soft); }
+.langs { margin: 8px 0 0; font-size: 15px; color: var(--ink-soft); }
+.langs a { color: #1f4e8c; text-underline-offset: 3px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 36px 44px; }
 .sonnet h2 {
   margin: 0 0 6px;
@@ -99,43 +101,44 @@ footer p { margin: 0; }
 <main id="text">
   <header>
     <h1>Sonnets</h1>
-    <p class="lede">Двенадцать сонетов Шекспира. Каждая буква здесь — птица с телом и весом. Она держит дистанцию, летит как семь ближайших соседей и заранее уворачивается от столкновений. Над страницей кружит сокол, а картинки — препятствия.</p>
+    <p class="lede">Twelve sonnets by Shakespeare. Every letter here is a bird with a body and weight. It keeps its distance, flies like its seven nearest neighbours and dodges collisions in advance. A falcon circles above the page, and the pictures are obstacles.</p>
+    <p class="langs">English · <a href="ru/" hreflang="ru" lang="ru">Русский</a></p>
   </header>
   <section class="preface" aria-labelledby="pre-h">
-    <h2 id="pre-h">Об этих сонетах</h2>
-    <figure class="fig fig-right"><img src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 260%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%2258%22 y=%220%22 width=%224%22 height=%2216%22/%3E%3Cpolygon points=%2260,10 38,110 82,110%22/%3E%3Crect x=%2230%22 y=%22104%22 width=%2260%22 height=%228%22/%3E%3Crect x=%2235%22 y=%22110%22 width=%2250%22 height=%2295%22/%3E%3Crect x=%2220%22 y=%22200%22 width=%2280%22 height=%2260%22/%3E%3C/g%3E%3Cg fill=%22%23efcfae%22 opacity=%22.6%22%3E%3Crect x=%2252%22 y=%22128%22 width=%2216%22 height=%2228%22 rx=%228%22/%3E%3Crect x=%2238%22 y=%22216%22 width=%2212%22 height=%2222%22 rx=%226%22/%3E%3Crect x=%2270%22 y=%22216%22 width=%2212%22 height=%2222%22 rx=%226%22/%3E%3C/g%3E%3C/svg%3E" alt="Силуэт колокольни" width="120" height="260"><figcaption>Колокольня</figcaption></figure>
-    <p>Сонеты Шекспира — <strong>154 стихотворения</strong>, впервые изданные в <em>1609</em> году. Каждый написан <em>пятистопным ямбом</em> и рифмуется по схеме <code>abab cdcd efef gg</code>: три четверостишия и заключительное двустишие<sup>1</sup>. Здесь их двенадцать, среди них <a href="#s-LXXIII">LXXIII</a> про опустевшие ветви, где недавно пели птицы, и <a href="#s-XXIX">XXIX</a> про жаворонка на рассвете.</p>
-    <figure class="fig fig-left"><img src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 220%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%2292%22 y=%22130%22 width=%2216%22 height=%2290%22/%3E%3Ccircle cx=%22100%22 cy=%2278%22 r=%2260%22/%3E%3Ccircle cx=%2256%22 cy=%22108%22 r=%2238%22/%3E%3Ccircle cx=%22144%22 cy=%22106%22 r=%2240%22/%3E%3Ccircle cx=%22100%22 cy=%22126%22 r=%2234%22/%3E%3C/g%3E%3C/svg%3E" alt="Силуэт дерева" width="150" height="165"><figcaption>Дерево</figcaption></figure>
-    <p>Что проверить на этой странице:</p>
+    <h2 id="pre-h">About these sonnets</h2>
+    <figure class="fig fig-right"><img src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 260%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%2258%22 y=%220%22 width=%224%22 height=%2216%22/%3E%3Cpolygon points=%2260,10 38,110 82,110%22/%3E%3Crect x=%2230%22 y=%22104%22 width=%2260%22 height=%228%22/%3E%3Crect x=%2235%22 y=%22110%22 width=%2250%22 height=%2295%22/%3E%3Crect x=%2220%22 y=%22200%22 width=%2280%22 height=%2260%22/%3E%3C/g%3E%3Cg fill=%22%23efcfae%22 opacity=%22.6%22%3E%3Crect x=%2252%22 y=%22128%22 width=%2216%22 height=%2228%22 rx=%228%22/%3E%3Crect x=%2238%22 y=%22216%22 width=%2212%22 height=%2222%22 rx=%226%22/%3E%3Crect x=%2270%22 y=%22216%22 width=%2212%22 height=%2222%22 rx=%226%22/%3E%3C/g%3E%3C/svg%3E" alt="Bell tower silhouette" width="120" height="260"><figcaption>Bell tower</figcaption></figure>
+    <p>Shakespeare's sonnets are <strong>154 poems</strong>, first published in <em>1609</em>. Each is written in <em>iambic pentameter</em> and rhymes <code>abab cdcd efef gg</code>: three quatrains and a closing couplet<sup>1</sup>. Twelve of them are here, among them <a href="#s-LXXIII">LXXIII</a> about bare boughs where birds sang not long ago, and <a href="#s-XXIX">XXIX</a> about the lark at break of day.</p>
+    <figure class="fig fig-left"><img src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 220%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%2292%22 y=%22130%22 width=%2216%22 height=%2290%22/%3E%3Ccircle cx=%22100%22 cy=%2278%22 r=%2260%22/%3E%3Ccircle cx=%2256%22 cy=%22108%22 r=%2238%22/%3E%3Ccircle cx=%22144%22 cy=%22106%22 r=%2240%22/%3E%3Ccircle cx=%22100%22 cy=%22126%22 r=%2234%22/%3E%3C/g%3E%3C/svg%3E" alt="Tree silhouette" width="150" height="165"><figcaption>Tree</figcaption></figure>
+    <p>Things to try on this page:</p>
     <ul>
-      <li>ссылки — их буквы летают своим цветом;</li>
-      <li><strong>жирные</strong> буквы тяжелее и медленнее, <em>курсив</em> ведёт себя как обычный текст;</li>
-      <li>картинки — препятствия: орда обтекает их, стая облетает;</li>
-      <li>линии, рамки таблиц и маркеры списков остаются на месте;</li>
-      <li>шкала кеглей под предисловием — от крошек до великанов в два и четыре заголовка.</li>
+      <li>links — their letters fly in their own colour;</li>
+      <li><strong>bold</strong> letters are heavier and slower, <em>italics</em> behave like regular text;</li>
+      <li>pictures are obstacles: the horde flows around them, the flock flies around them;</li>
+      <li>rules, table borders and list markers stay in place;</li>
+      <li>the type-size scale below the preface — from tiny letters to giants two and four times the heading.</li>
     </ul>
     <ol>
-      <li>Нажмите <kbd>2</kbd>: стая поднимется волной от курсора.</li>
-      <li>Проведите курсором сквозь стаю: тревога побежит по ней волной.</li>
-      <li>Нажмите <kbd>3</kbd> и уменьшите «Обзор зомби» в настройках.</li>
+      <li>Press <kbd>2</kbd>: the flock takes off in a wave from the cursor.</li>
+      <li>Sweep the cursor through the flock: alarm runs through it as a wave.</li>
+      <li>Press <kbd>3</kbd> and lower “Zombie view range” in the settings.</li>
     </ol>
-    <p class="fn"><sup>1</sup> Такую форму и называют шекспировским, или английским, сонетом.</p>
-    <blockquote>Пока живут дыханье и глаза, живут и строки — и дают жизнь тебе. <cite>— сонет XVIII, подстрочник</cite></blockquote>
+    <p class="fn"><sup>1</sup> This form is known as the Shakespearean, or English, sonnet.</p>
+    <blockquote>So long as men can breathe, or eyes can see, so long lives this, and this gives life to thee. <cite>— Sonnet XVIII</cite></blockquote>
     <table>
-      <caption>Птицы в сонетах на странице</caption>
-      <thead><tr><th scope="col">Сонет</th><th scope="col">Начало</th><th scope="col">Птицы</th></tr></thead>
+      <caption>Birds in the sonnets on this page</caption>
+      <thead><tr><th scope="col">Sonnet</th><th scope="col">Opening</th><th scope="col">Birds</th></tr></thead>
       <tbody>
-        <tr><td><a href="#s-LXXIII">LXXIII</a></td><td>That time of year…</td><td>пели и замолкли</td></tr>
-        <tr><td><a href="#s-XXIX">XXIX</a></td><td>When, in disgrace…</td><td>жаворонок</td></tr>
-        <tr><td><a href="#s-XCVII">XCVII</a></td><td>How like a winter…</td><td>умолкли</td></tr>
-        <tr><td><a href="#s-XVIII">XVIII</a></td><td>Shall I compare…</td><td>нет</td></tr>
+        <tr><td><a href="#s-LXXIII">LXXIII</a></td><td>That time of year…</td><td>sang, now silent</td></tr>
+        <tr><td><a href="#s-XXIX">XXIX</a></td><td>When, in disgrace…</td><td>the lark</td></tr>
+        <tr><td><a href="#s-XCVII">XCVII</a></td><td>How like a winter…</td><td>fallen silent</td></tr>
+        <tr><td><a href="#s-XVIII">XVIII</a></td><td>Shall I compare…</td><td>none</td></tr>
       </tbody>
     </table>
     <hr>
   </section>
   <section aria-labelledby="scale-h">
-    <h2 id="scale-h" style="margin:0 0 8px;font-family:var(--font-display);font-weight:500;font-size:26px;letter-spacing:.06em">Шкала кеглей</h2>
-    <p class="scale" lang="en">
+    <h2 id="scale-h" style="margin:0 0 8px;font-family:var(--font-display);font-weight:500;font-size:26px;letter-spacing:.06em">Type-size scale</h2>
+    <p class="scale">
       <span style="font-size:calc(var(--h1)*.2)">So</span>
       <span style="font-size:calc(var(--h1)*.3)">long</span>
       <span style="font-size:calc(var(--h1)*.45)">lives</span>
@@ -147,12 +150,12 @@ footer p { margin: 0; }
       <span style="font-size:calc(var(--h1)*3)">to</span>
       <span style="font-size:calc(var(--h1)*4)">thee</span>
     </p>
-    <p class="scale-note">Последняя строка сонета XVIII: каждое слово крупнее предыдущего, от 0,2 до 4 размеров заголовка. Масса растёт с площадью буквы, поэтому великаны разгоняются дольше всех и расталкивают мелочь.</p>
+    <p class="scale-note">The last line of Sonnet XVIII: each word is larger than the one before, from 0.2 to 4 times the heading size. Mass grows with a letter's area, so giants take the longest to speed up and push the small ones aside.</p>
   </section>
   <div class="grid" id="grid"></div>
-  <img class="skyline" src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 150%22 preserveAspectRatio=%22none%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%220%22 y=%2290%22 width=%22140%22 height=%2260%22/%3E%3Cpolygon points=%220,90 70,55 140,90%22/%3E%3Crect x=%22100%22 y=%2250%22 width=%2212%22 height=%2230%22/%3E%3Crect x=%22150%22 y=%2270%22 width=%22110%22 height=%2280%22/%3E%3Crect x=%22170%22 y=%2248%22 width=%2210%22 height=%2224%22/%3E%3Crect x=%22230%22 y=%2252%22 width=%2210%22 height=%2220%22/%3E%3Crect x=%22270%22 y=%22100%22 width=%2290%22 height=%2250%22/%3E%3Cpolygon points=%22270,100 315,72 360,100%22/%3E%3Crect x=%22370%22 y=%2260%22 width=%2270%22 height=%2290%22/%3E%3Cpolygon points=%22370,60 405,20 440,60%22/%3E%3Crect x=%22450%22 y=%2295%22 width=%22160%22 height=%2255%22/%3E%3Crect x=%22480%22 y=%2278%22 width=%2214%22 height=%2220%22/%3E%3Crect x=%22620%22 y=%2280%22 width=%22100%22 height=%2270%22/%3E%3Cpolygon points=%22620,80 670,58 720,80%22/%3E%3Crect x=%22730%22 y=%22105%22 width=%22120%22 height=%2245%22/%3E%3Cpolygon points=%22905,150 925,30 945,150%22/%3E%3Crect x=%22960%22 y=%2285%22 width=%22120%22 height=%2265%22/%3E%3Cpolygon points=%22960,85 1020,60 1080,85%22/%3E%3Crect x=%221040%22 y=%2256%22 width=%2210%22 height=%2220%22/%3E%3Crect x=%221090%22 y=%22100%22 width=%22110%22 height=%2250%22/%3E%3C/g%3E%3Cg stroke=%22%232a2533%22 stroke-width=%221.5%22 fill=%22none%22%3E%3Cpath d=%22M925 40 Q 820 70 700 60 M925 40 Q 1040 75 1200 65%22/%3E%3Cpath d=%22M913 80 h24 M916 60 h18%22/%3E%3C/g%3E%3C/svg%3E" alt="Крыши города" width="1200" height="150">
+  <img class="skyline" src="data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 150%22 preserveAspectRatio=%22none%22%3E%3Cg fill=%22%232a2533%22%3E%3Crect x=%220%22 y=%2290%22 width=%22140%22 height=%2260%22/%3E%3Cpolygon points=%220,90 70,55 140,90%22/%3E%3Crect x=%22100%22 y=%2250%22 width=%2212%22 height=%2230%22/%3E%3Crect x=%22150%22 y=%2270%22 width=%22110%22 height=%2280%22/%3E%3Crect x=%22170%22 y=%2248%22 width=%2210%22 height=%2224%22/%3E%3Crect x=%22230%22 y=%2252%22 width=%2210%22 height=%2220%22/%3E%3Crect x=%22270%22 y=%22100%22 width=%2290%22 height=%2250%22/%3E%3Cpolygon points=%22270,100 315,72 360,100%22/%3E%3Crect x=%22370%22 y=%2260%22 width=%2270%22 height=%2290%22/%3E%3Cpolygon points=%22370,60 405,20 440,60%22/%3E%3Crect x=%22450%22 y=%2295%22 width=%22160%22 height=%2255%22/%3E%3Crect x=%22480%22 y=%2278%22 width=%2214%22 height=%2220%22/%3E%3Crect x=%22620%22 y=%2280%22 width=%22100%22 height=%2270%22/%3E%3Cpolygon points=%22620,80 670,58 720,80%22/%3E%3Crect x=%22730%22 y=%22105%22 width=%22120%22 height=%2245%22/%3E%3Cpolygon points=%22905,150 925,30 945,150%22/%3E%3Crect x=%22960%22 y=%2285%22 width=%22120%22 height=%2265%22/%3E%3Cpolygon points=%22960,85 1020,60 1080,85%22/%3E%3Crect x=%221040%22 y=%2256%22 width=%2210%22 height=%2220%22/%3E%3Crect x=%221090%22 y=%22100%22 width=%22110%22 height=%2250%22/%3E%3C/g%3E%3Cg stroke=%22%232a2533%22 stroke-width=%221.5%22 fill=%22none%22%3E%3Cpath d=%22M925 40 Q 820 70 700 60 M925 40 Q 1040 75 1200 65%22/%3E%3Cpath d=%22M913 80 h24 M916 60 h18%22/%3E%3C/g%3E%3C/svg%3E" alt="City rooftops" width="1200" height="150">
   <footer>
-    <p>Правила стаи — Крейг Рейнольдс, 1987. Семь соседей — из наблюдений за скворцами над Римом (Ballerini и соавторы, 2008). Страх столкновения растёт по мере сокращения времени до него (Karamouzas, Skinner, Guy, 2014). Тела разводятся как в position-based dynamics для толп (Weiss и соавторы, 2017). Полёт с креном над гнездовьем — модель StarDisplay (Hemelrijk, Hildenbrandt), разворот волной — Attanasi и соавторы (2014), ответы стаи на атаки сокола — Storms и соавторы (2019). Взлёт волной подсмотрен у терминальной стаи cbirds. Облёт препятствий по лучу вперёд — Рейнольдс (1999). У каждого зомби своё время реакции и своя сторона обхода, поэтому толпа не качается разом.</p>
+    <p>Flocking rules — Craig Reynolds, 1987. Seven neighbours — from observations of starlings over Rome (Ballerini et al., 2008). Fear of collision grows as the time to it shrinks (Karamouzas, Skinner, Guy, 2014). Bodies are separated as in position-based dynamics for crowds (Weiss et al., 2017). Banked flight above the roost — the StarDisplay model (Hemelrijk, Hildenbrandt); turning waves — Attanasi et al. (2014); the flock's responses to falcon attacks — Storms et al. (2019). The take-off wave was borrowed from the terminal flock cbirds. Obstacle avoidance by a ray cast ahead — Reynolds (1999). Every zombie has its own reaction time and its own detour side, so the crowd doesn't sway in unison.</p>
   </footer>
 </main>
 
@@ -212,41 +215,104 @@ footer p { margin: 0; }
 
   const COS_TURN = Math.cos(CFG.MAX_TURN), SIN_TURN = Math.sin(CFG.MAX_TURN);
   // ползунки панели: ключ CFG, подпись, мин, макс, шаг, единицы
+  // Строки интерфейса: язык выбирается опцией lang при start(); экземпляр на странице всегда один
+  const I18N = {
+    en: {
+      locale: 'en-US', dec: '.',
+      unit: { step: 'px/step', px: 'px', s: 's', perS: 'shots/s', ms: 'ms', mln: 'M', bln: 'B' },
+      tune: {
+        HORDE_SPEED: 'Horde base speed', ZOMBIE_SIGHT: 'Zombie view range', FLY_CRUISE: 'Bird speed',
+        FALCON_R: 'Fear of the falcon', K: 'Neighbours (K)', WAVE_SPEED: 'Take-off wave',
+        HORDE_REACT: 'Zombie reaction', OB_MARGIN: 'Bird clearance from pictures', FIRE_RATE: 'Rate of fire',
+        BULLET_SPEED: 'Bullet speed',
+      },
+      seeAll: 'see everyone',
+      modes: { rest: 'Rest', flock: 'Murmuration', horde: 'Horde' },
+      algos: { straight: 'Straight line', naive: 'All pairs O(N²)', grid: 'Grid', gridK: 'Grid + 7 neighbours' },
+      hints: {
+        rest: 'Sweep the cursor over the lines: letters take off and come back. Click for a shock wave.',
+        flock: 'The flock circles above the roost and starts its own turns. The hunting falcon attacks on its own; the cursor is a second falcon: birds dodge its path and alarm runs through the flock as a wave. Pictures are obstacles.',
+        horde: 'The cursor is the hero now. Zombies notice it within their view range and each reacts with its own delay; the rest wander until the crowd carries them along. Dots and commas run faster, giants slowest of all. Click to knock them back.',
+      },
+      naiveSwitched: (n, pairs) => `All pairs for ${n} letters means ${pairs} checks per frame — the tab would freeze. Switched to grid + 7 neighbours.`,
+      naiveFlight: (n) => `${n} letters are about to take off: all pairs can't keep up. Switched to grid + 7 neighbours.`,
+      naiveRefused: (n, pairs) => `All pairs for ${n} letters means ${pairs} checks per frame — the tab would freeze. Reduce the text or pick the grid.`,
+      react: { horde: 'chasing', flock: 'panicking', rest: 'reacting' },
+      noWebGL: 'LetterSwarm: WebGL2 unavailable, drawing with Canvas2D',
+      title: 'Letter Murmuration · v6',
+      hud: {
+        region: 'Letter flock controls', toggle: 'Collapse or expand the panel', volumeRow: 'Text volume',
+        behaviour: 'Behaviour', search: 'Neighbour search', bodies: 'Letter bodies', solid: 'Volume and mass',
+        ghosts: 'Ghosts', predator: 'Predator in murmuration', falcon: 'Hunting falcon', none: 'None',
+        weapon: 'Hero weapon', gun: 'Dot gun', off: 'Off', revive: 'Revive shot', tune: 'Dynamics settings',
+        note: 'View range: big letters see further than the base radius, small ones less. Horde speed is multiplied by the glyph\'s lightness.',
+        reset: 'Reset settings', fps: 'fps', rules: 'rules', bodiesStat: 'bodies', total: 'letters total',
+        flying: 'in flight', draw: 'drawing', nb: 'neighbours ⌀', contacts: 'contacts ⌀', overlap: 'overlap ⌀',
+        waiting: 'waiting to fly', obstacles: 'obstacles', budget: 'Frame budget 16.7 ms at 60 fps',
+      },
+    },
+    ru: {
+      locale: 'ru-RU', dec: ',',
+      unit: { step: 'px/шаг', px: 'px', s: 'с', perS: 'в с', ms: 'мс', mln: 'млн', bln: 'млрд' },
+      tune: {
+        HORDE_SPEED: 'Базовая скорость орды', ZOMBIE_SIGHT: 'Обзор зомби', FLY_CRUISE: 'Скорость птиц',
+        FALCON_R: 'Испуг от сокола', K: 'Соседей (K)', WAVE_SPEED: 'Волна взлёта',
+        HORDE_REACT: 'Реакция зомби', OB_MARGIN: 'Отступ птиц от картинок', FIRE_RATE: 'Скорострельность',
+        BULLET_SPEED: 'Скорость пуль',
+      },
+      seeAll: 'видят всех',
+      modes: { rest: 'Покой', flock: 'Мурмурация', horde: 'Орда' },
+      algos: { straight: 'По прямой', naive: 'Все пары O(N²)', grid: 'Сетка', gridK: 'Сетка + 7 соседей' },
+      hints: {
+        rest: 'Проведите курсором по строкам: буквы вспорхнут и вернутся. Клик даёт взрывную волну.',
+        flock: 'Стая кружит над гнездовьем и сама затевает развороты. Сокол-охотник атакует сам, курсор — второй сокол: птицы уходят с его пути, тревога бежит по стае волной. Картинки — препятствия.',
+        horde: 'Курсор стал героем. Зомби замечают его в радиусе обзора и реагируют каждый со своей задержкой, остальные бродят, пока их не увлечёт толпа. Точки и запятые бегут быстрее, великаны — медленнее всех. Клик отбрасывает.',
+      },
+      naiveSwitched: (n, pairs) => `Все пары для ${n} букв — это ${pairs} проверок за кадр, вкладка зависнет. Переключил на сетку + 7 соседей.`,
+      naiveFlight: (n) => `В полёт поднимутся ${n} букв: перебор всех пар не потянет. Включил сетку + 7 соседей.`,
+      naiveRefused: (n, pairs) => `Все пары для ${n} букв — это ${pairs} проверок за кадр, вкладка зависнет. Уменьшите текст или выберите сетку.`,
+      react: { horde: 'в погоне', flock: 'в панике', rest: 'реагируют' },
+      noWebGL: 'LetterSwarm: WebGL2 недоступен, рисую через Canvas2D',
+      title: 'Мурмурация букв · v6',
+      hud: {
+        region: 'Управление стаей букв', toggle: 'Свернуть или развернуть панель', volumeRow: 'Объём текста',
+        behaviour: 'Поведение', search: 'Поиск соседей', bodies: 'Тела букв', solid: 'С объёмом и массой',
+        ghosts: 'Призраки', predator: 'Хищник в мурмурации', falcon: 'Сокол-охотник', none: 'Нет',
+        weapon: 'Оружие героя', gun: 'Точкомёт', off: 'Выкл', revive: 'Вернуть сбитые', tune: 'Настройки динамики',
+        note: 'Обзор: крупные буквы видят дальше базового радиуса, мелкие — ближе. Скорость орды умножается на лёгкость знака.',
+        reset: 'Сбросить настройки', fps: 'кадров/с', rules: 'правила', bodiesStat: 'тела', total: 'букв всего',
+        flying: 'в полёте', draw: 'отрисовка', nb: 'соседей ⌀', contacts: 'касаний ⌀', overlap: 'вдавливание ⌀',
+        waiting: 'ждут взлёта', obstacles: 'препятствий', budget: 'Бюджет кадра 16,7 мс при 60 кадрах/с',
+      },
+    },
+  };
+  let T = I18N.en;
+
+  // ползунки панели: ключ CFG, мин, макс, шаг, единицы (ключ в T.unit); подписи — в T.tune
   const TUNABLES = [
-    ['HORDE_SPEED', 'Базовая скорость орды', 0.5, 8, 0.1, 'px/шаг'],
-    ['ZOMBIE_SIGHT', 'Обзор зомби', 40, 2000, 10, 'px'],
-    ['FLY_CRUISE', 'Скорость птиц', 1.5, 8, 0.1, 'px/шаг'],
-    ['FALCON_R', 'Испуг от сокола', 40, 400, 5, 'px'],
-    ['K', 'Соседей (K)', 1, 20, 1, ''],
-    ['WAVE_SPEED', 'Волна взлёта', 4, 80, 1, 'px/шаг'],
-    ['HORDE_REACT', 'Реакция зомби', 0, 1.5, 0.05, 'с'],
-    ['OB_MARGIN', 'Отступ птиц от картинок', 0, 100, 2, 'px'],
-    ['FIRE_RATE', 'Скорострельность', 2, 240, 1, 'в с'],
-    ['BULLET_SPEED', 'Скорость пуль', 4, 40, 1, 'px/шаг'],
+    ['HORDE_SPEED', 0.5, 8, 0.1, 'step'],
+    ['ZOMBIE_SIGHT', 40, 2000, 10, 'px'],
+    ['FLY_CRUISE', 1.5, 8, 0.1, 'step'],
+    ['FALCON_R', 40, 400, 5, 'px'],
+    ['K', 1, 20, 1, ''],
+    ['WAVE_SPEED', 4, 80, 1, 'step'],
+    ['HORDE_REACT', 0, 1.5, 0.05, 's'],
+    ['OB_MARGIN', 0, 100, 2, 'px'],
+    ['FIRE_RATE', 2, 240, 1, 'perS'],
+    ['BULLET_SPEED', 4, 40, 1, 'step'],
   ];
   const TUNE_DEFAULTS = {};
   TUNABLES.forEach(([k]) => { TUNE_DEFAULTS[k] = CFG[k]; });
-  const fmtTune = (k, v) => k === 'ZOMBIE_SIGHT' && v >= 1990 ? 'видят всех'
-    : (Math.round(v * 10) / 10).toString().replace('.', ',') + (TUNABLES.find((t) => t[0] === k)[5] ? ' ' + TUNABLES.find((t) => t[0] === k)[5] : '');
+  const fmtTune = (k, v) => {
+    if (k === 'ZOMBIE_SIGHT' && v >= 1990) return T.seeAll;
+    const u = TUNABLES.find((t) => t[0] === k)[4];
+    return fmtDec(Math.round(v * 10) / 10) + (u ? ' ' + T.unit[u] : '');
+  };
   const OFF_C = [0, -1, 1, 0, 0, -1, 1, -1, 1];
   const OFF_R = [0, 0, 0, -1, 1, -1, -1, 1, 1];
 
-  const MODES = [
-    ['rest', 'Покой', '1'],
-    ['flock', 'Мурмурация', '2'],
-    ['horde', 'Орда', '3'],
-  ];
-  const ALGOS = [
-    ['straight', 'По прямой'],
-    ['naive', 'Все пары O(N²)'],
-    ['grid', 'Сетка'],
-    ['gridK', 'Сетка + 7 соседей'],
-  ];
-  const HINTS = {
-    rest: 'Проведите курсором по строкам: буквы вспорхнут и вернутся. Клик даёт взрывную волну.',
-    flock: 'Стая кружит над гнездовьем и сама затевает развороты. Сокол-охотник атакует сам, курсор — второй сокол: птицы уходят с его пути, тревога бежит по стае волной. Картинки — препятствия.',
-    horde: 'Курсор стал героем. Зомби замечают его в радиусе обзора и реагируют каждый со своей задержкой, остальные бродят, пока их не увлечёт толпа. Точки и запятые бегут быстрее, великаны — медленнее всех. Клик отбрасывает.',
-  };
+  const MODES = [['rest', '1'], ['flock', '2'], ['horde', '3']];
+  const ALGOS = [['straight'], ['naive'], ['grid'], ['gridK']];
 
   function start(root, userOpts) {
     const opts = Object.assign({
@@ -256,12 +322,15 @@ footer p { margin: 0; }
       multiplier: 1,
       onMultiplier: null,
       accent: '#8c2f39',
-      title: 'Мурмурация букв · v6',
+      lang: 'en',              // язык панели: 'en' или 'ru'
+      title: null,             // по умолчанию — из словаря языка
       volume: true,
       weapon: false,
       wildFalcon: true,
       ink: '#1c1922',
     }, userOpts || {});
+    T = I18N[opts.lang] || I18N.en;
+    if (!opts.title) opts.title = T.title;
     root = root || document.body;
     const doc = document;
 
@@ -869,7 +938,7 @@ footer p { margin: 0; }
       activeCount = n;
       if (!n) { nbAvg = 0; contactsAvg = 0; overlapAvg = 0; WF.present = false; particlesStep(); return; }
       if (algo === 'naive' && n > CFG.NAIVE_LIMIT) {
-        toast(`Все пары для ${fmtInt(n)} букв — это ${fmtBig(n * n)} проверок за кадр, вкладка зависнет. Переключил на сетку + 7 соседей.`);
+        toast(T.naiveSwitched(fmtInt(n), fmtBig(n * n)));
         setAlgo('gridK', true);
       }
       const t0 = performance.now();
@@ -1714,7 +1783,7 @@ footer p { margin: 0; }
       if (m === mode) return;
       if ((m === 'flock' || m === 'horde') && algo === 'naive' && N > CFG.NAIVE_LIMIT) {
         setAlgo('gridK', true);
-        toast(`В полёт поднимутся ${fmtInt(N)} букв: перебор всех пар не потянет. Включил сетку + 7 соседей.`);
+        toast(T.naiveFlight(fmtInt(N)));
       }
       const prev = mode;
       mode = m;
@@ -1745,7 +1814,7 @@ footer p { margin: 0; }
       if (a === 'naive') {
         const n = mode === 'rest' ? activeCount : N;
         if (n > CFG.NAIVE_LIMIT) {
-          toast(`Все пары для ${fmtInt(n)} букв — это ${fmtBig(n * n)} проверок за кадр, вкладка зависнет. Уменьшите текст или выберите сетку.`);
+          toast(T.naiveRefused(fmtInt(n), fmtBig(n * n)));
           return;
         }
       }
@@ -1810,10 +1879,10 @@ footer p { margin: 0; }
           b.classList.toggle('on', on);
           if (b.dataset.g !== 'min' && b.dataset.g !== 'revive') b.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
-        $('.hint').textContent = HINTS[mode];
+        $('.hint').textContent = T.hints[mode];
       }
       $('#fps').textContent = Math.round(fpsE);
-      $('#rlbl').textContent = mode === 'horde' ? 'в погоне' : mode === 'flock' ? 'в панике' : 'реагируют';
+      $('#rlbl').textContent = T.react[mode];
       $('#rc').textContent = mode === 'rest' || !activeCount ? '—' : fmtInt(reactCount);
       $('#pw').textContent = fmtInt(pendingWakes);
       $('#obn').textContent = fmtInt(OBN);
@@ -1825,9 +1894,9 @@ footer p { margin: 0; }
       $('#tot').textContent = fmtInt(N);
       $('#act').textContent = fmtInt(activeCount);
       $('#rnd').textContent = glr && !glr.lost ? 'WebGL2' : 'Canvas2D';
-      $('#nb').textContent = activeCount && algo !== 'straight' ? nbAvg.toFixed(1).replace('.', ',') : '—';
-      $('#ct').textContent = volume && activeCount ? contactsAvg.toFixed(1).replace('.', ',') : '—';
-      $('#ov').textContent = volume && activeCount ? overlapAvg.toFixed(2).replace('.', ',') + ' px' : '—';
+      $('#nb').textContent = activeCount && algo !== 'straight' ? fmtDec(nbAvg.toFixed(1)) : '—';
+      $('#ct').textContent = volume && activeCount ? fmtDec(contactsAvg.toFixed(1)) : '—';
+      $('#ov').textContent = volume && activeCount ? fmtDec(overlapAvg.toFixed(2)) + ' px' : '—';
       const budget = CFG.STEP_MS;
       const ws = Math.min(100, steerE / budget * 100);
       const wc = Math.min(100 - ws, (volume ? collE : 0) / budget * 100);
@@ -1924,7 +1993,7 @@ footer p { margin: 0; }
       gl.linkProgram(prog);
       if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
     } catch (e) {
-      console.warn('LetterSwarm: WebGL2 недоступен, рисую через Canvas2D', e);
+      console.warn(T.noWebGL, e);
       return null;
     }
     const U = (n) => gl.getUniformLocation(prog, n);
@@ -1990,19 +2059,21 @@ footer p { margin: 0; }
     };
   }
 
-  function fmtInt(n) { return Math.round(n).toLocaleString('ru-RU'); }
-  function fmtMs(ms) { return ms.toFixed(1).replace('.', ',') + ' мс'; }
+  function fmtInt(n) { return Math.round(n).toLocaleString(T.locale); }
+  function fmtDec(v) { return String(v).replace('.', T.dec); }
+  function fmtMs(ms) { return fmtDec(ms.toFixed(1)) + ' ' + T.unit.ms; }
   function fmtBig(n) {
-    if (n >= 1e9) return (n / 1e9).toFixed(1).replace('.', ',') + ' млрд';
-    if (n >= 1e6) return Math.round(n / 1e6) + ' млн';
+    if (n >= 1e9) return fmtDec((n / 1e9).toFixed(1)) + ' ' + T.unit.bln;
+    if (n >= 1e6) return Math.round(n / 1e6) + ' ' + T.unit.mln;
     return fmtInt(n);
   }
 
   function hudMarkup(opts) {
-    const seg = (g, list) => list.map(([v, label, key]) =>
-      `<button type="button" data-g="${g}" data-v="${v}" aria-pressed="false">${key ? `<kbd>${key}</kbd>` : ''}${label}</button>`).join('');
+    const H = T.hud;
+    const seg = (g, list, labels) => list.map(([v, key]) =>
+      `<button type="button" data-g="${g}" data-v="${v}" aria-pressed="false">${key ? `<kbd>${key}</kbd>` : ''}${labels[v]}</button>`).join('');
     const mult = opts.multipliers ? `
-      <div class="row"><span class="lbl">Объём текста</span><div class="seg">${
+      <div class="row"><span class="lbl">${H.volumeRow}</span><div class="seg">${
         opts.multipliers.map((k) => `<button type="button" data-g="mult" data-v="${k}" aria-pressed="false">×${k}</button>`).join('')
       }</div></div>` : '';
     return `<style>
@@ -2061,49 +2132,49 @@ footer p { margin: 0; }
       .toast[hidden] { display: none; }
       @media (prefers-reduced-motion: reduce) { button { transition: none; } }
     </style>
-    <div class="hud" role="region" aria-label="Управление стаей букв">
+    <div class="hud" role="region" aria-label="${H.region}">
       <div class="top"><b>${opts.title}</b>
-        <button type="button" class="min" data-g="min" aria-expanded="true" aria-label="Свернуть или развернуть панель">–</button></div>
+        <button type="button" class="min" data-g="min" aria-expanded="true" aria-label="${H.toggle}">–</button></div>
       <div class="body">
-        <div class="row"><span class="lbl">Поведение</span><div class="seg">${seg('mode', MODES)}</div></div>
-        <div class="row"><span class="lbl">Поиск соседей</span><div class="seg">${seg('algo', ALGOS)}</div></div>
-        <div class="row"><span class="lbl">Тела букв</span><div class="seg">
-          <button type="button" data-g="vol" data-v="1" aria-pressed="false"><kbd>V</kbd>С объёмом и массой</button>
-          <button type="button" data-g="vol" data-v="0" aria-pressed="false">Призраки</button></div></div>
-        <div class="row"><span class="lbl">Хищник в мурмурации</span><div class="seg">
-          <button type="button" data-g="wf" data-v="1" aria-pressed="false"><kbd>H</kbd>Сокол-охотник</button>
-          <button type="button" data-g="wf" data-v="0" aria-pressed="false">Нет</button></div></div>
-        <div class="row"><span class="lbl">Оружие героя</span><div class="seg">
-          <button type="button" data-g="gun" data-v="1" aria-pressed="false"><kbd>F</kbd>Точкомёт</button>
-          <button type="button" data-g="gun" data-v="0" aria-pressed="false">Выкл</button>
-          <button type="button" data-g="revive" id="revive" disabled>Вернуть сбитые · <span id="kills">0</span></button></div></div>
+        <div class="row"><span class="lbl">${H.behaviour}</span><div class="seg">${seg('mode', MODES, T.modes)}</div></div>
+        <div class="row"><span class="lbl">${H.search}</span><div class="seg">${seg('algo', ALGOS, T.algos)}</div></div>
+        <div class="row"><span class="lbl">${H.bodies}</span><div class="seg">
+          <button type="button" data-g="vol" data-v="1" aria-pressed="false"><kbd>V</kbd>${H.solid}</button>
+          <button type="button" data-g="vol" data-v="0" aria-pressed="false">${H.ghosts}</button></div></div>
+        <div class="row"><span class="lbl">${H.predator}</span><div class="seg">
+          <button type="button" data-g="wf" data-v="1" aria-pressed="false"><kbd>H</kbd>${H.falcon}</button>
+          <button type="button" data-g="wf" data-v="0" aria-pressed="false">${H.none}</button></div></div>
+        <div class="row"><span class="lbl">${H.weapon}</span><div class="seg">
+          <button type="button" data-g="gun" data-v="1" aria-pressed="false"><kbd>F</kbd>${H.gun}</button>
+          <button type="button" data-g="gun" data-v="0" aria-pressed="false">${H.off}</button>
+          <button type="button" data-g="revive" id="revive" disabled>${H.revive} · <span id="kills">0</span></button></div></div>
         ${mult}
-        <details class="tune"><summary>Настройки динамики</summary>
-          <div class="tunes">${TUNABLES.map(([k, label, min, max, st]) => `
-            <label class="sl" for="t-${k}"><span>${label}</span><b id="v-${k}"></b>
+        <details class="tune"><summary>${H.tune}</summary>
+          <div class="tunes">${TUNABLES.map(([k, min, max, st]) => `
+            <label class="sl" for="t-${k}"><span>${T.tune[k]}</span><b id="v-${k}"></b>
               <input type="range" id="t-${k}" data-k="${k}" min="${min}" max="${max}" step="${st}"></label>`).join('')}
           </div>
-          <p class="note">Обзор: крупные буквы видят дальше базового радиуса, мелкие — ближе. Скорость орды умножается на лёгкость знака.</p>
-          <button type="button" data-g="tune-reset">Сбросить настройки</button>
+          <p class="note">${H.note}</p>
+          <button type="button" data-g="tune-reset">${H.reset}</button>
         </details>
         <div class="stats">
-          <div><span>кадров/с</span><b id="fps">—</b></div>
-          <div><span>правила</span><b id="st">—</b></div>
-          <div><span>тела</span><b id="co">—</b></div>
-          <div><span>букв всего</span><b id="tot">—</b></div>
-          <div><span>в полёте</span><b id="act">—</b></div>
-          <div><span>отрисовка</span><b id="drw">—</b></div>
-          <div><span>соседей ⌀</span><b id="nb">—</b></div>
-          <div><span>касаний ⌀</span><b id="ct">—</b></div>
-          <div><span>вдавливание ⌀</span><b id="ov">—</b></div>
-          <div><span id="rlbl">реагируют</span><b id="rc">—</b></div>
-          <div><span>ждут взлёта</span><b id="pw">—</b></div>
-          <div><span>препятствий</span><b id="obn">—</b></div>
+          <div><span>${H.fps}</span><b id="fps">—</b></div>
+          <div><span>${H.rules}</span><b id="st">—</b></div>
+          <div><span>${H.bodiesStat}</span><b id="co">—</b></div>
+          <div><span>${H.total}</span><b id="tot">—</b></div>
+          <div><span>${H.flying}</span><b id="act">—</b></div>
+          <div><span>${H.draw}</span><b id="drw">—</b></div>
+          <div><span>${H.nb}</span><b id="nb">—</b></div>
+          <div><span>${H.contacts}</span><b id="ct">—</b></div>
+          <div><span>${H.overlap}</span><b id="ov">—</b></div>
+          <div><span id="rlbl">${T.react.rest}</span><b id="rc">—</b></div>
+          <div><span>${H.waiting}</span><b id="pw">—</b></div>
+          <div><span>${H.obstacles}</span><b id="obn">—</b></div>
         </div>
         <div class="budget">
-          <span>Бюджет кадра 16,7 мс при 60 кадрах/с · <em id="rnd"></em></span>
+          <span>${H.budget} · <em id="rnd"></em></span>
           <div class="bar"><i id="bsim"></i><i id="bcol"></i><i id="bdrw"></i></div>
-          <div class="legend"><span><i style="background:var(--acc2)"></i>правила</span><span><i style="background:#8cc7a1"></i>тела</span><span><i style="background:#8fb3d9"></i>отрисовка</span></div>
+          <div class="legend"><span><i style="background:var(--acc2)"></i>${H.rules}</span><span><i style="background:#8cc7a1"></i>${H.bodiesStat}</span><span><i style="background:#8fb3d9"></i>${H.draw}</span></div>
         </div>
         <div class="hint"></div>
         <div class="toast" role="status" hidden></div>
@@ -2305,7 +2376,7 @@ footer p { margin: 0; }
   function render(k) {
     let html = '';
     for (let r = 0; r < k; r++) {
-      if (r) html += '<div class="repeat">Повтор ' + (r + 1) + ' из ' + k + '</div>';
+      if (r) html += '<div class="repeat">Repeat ' + (r + 1) + ' of ' + k + '</div>';
       for (const [num, lines] of SONNETS) {
         html += '<article class="sonnet"' + (r ? '' : ' id="s-' + num + '"') + '><h2>' + num + '</h2><div>' +
           lines.map((l, i) => '<span class="l' + (i >= 12 ? ' c' : '') + '">' + esc(l) + '</span>').join('') +

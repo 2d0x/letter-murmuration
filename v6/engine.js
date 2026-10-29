@@ -53,41 +53,104 @@
 
   const COS_TURN = Math.cos(CFG.MAX_TURN), SIN_TURN = Math.sin(CFG.MAX_TURN);
   // ползунки панели: ключ CFG, подпись, мин, макс, шаг, единицы
+  // Строки интерфейса: язык выбирается опцией lang при start(); экземпляр на странице всегда один
+  const I18N = {
+    en: {
+      locale: 'en-US', dec: '.',
+      unit: { step: 'px/step', px: 'px', s: 's', perS: 'shots/s', ms: 'ms', mln: 'M', bln: 'B' },
+      tune: {
+        HORDE_SPEED: 'Horde base speed', ZOMBIE_SIGHT: 'Zombie view range', FLY_CRUISE: 'Bird speed',
+        FALCON_R: 'Fear of the falcon', K: 'Neighbours (K)', WAVE_SPEED: 'Take-off wave',
+        HORDE_REACT: 'Zombie reaction', OB_MARGIN: 'Bird clearance from pictures', FIRE_RATE: 'Rate of fire',
+        BULLET_SPEED: 'Bullet speed',
+      },
+      seeAll: 'see everyone',
+      modes: { rest: 'Rest', flock: 'Murmuration', horde: 'Horde' },
+      algos: { straight: 'Straight line', naive: 'All pairs O(N²)', grid: 'Grid', gridK: 'Grid + 7 neighbours' },
+      hints: {
+        rest: 'Sweep the cursor over the lines: letters take off and come back. Click for a shock wave.',
+        flock: 'The flock circles above the roost and starts its own turns. The hunting falcon attacks on its own; the cursor is a second falcon: birds dodge its path and alarm runs through the flock as a wave. Pictures are obstacles.',
+        horde: 'The cursor is the hero now. Zombies notice it within their view range and each reacts with its own delay; the rest wander until the crowd carries them along. Dots and commas run faster, giants slowest of all. Click to knock them back.',
+      },
+      naiveSwitched: (n, pairs) => `All pairs for ${n} letters means ${pairs} checks per frame — the tab would freeze. Switched to grid + 7 neighbours.`,
+      naiveFlight: (n) => `${n} letters are about to take off: all pairs can't keep up. Switched to grid + 7 neighbours.`,
+      naiveRefused: (n, pairs) => `All pairs for ${n} letters means ${pairs} checks per frame — the tab would freeze. Reduce the text or pick the grid.`,
+      react: { horde: 'chasing', flock: 'panicking', rest: 'reacting' },
+      noWebGL: 'LetterSwarm: WebGL2 unavailable, drawing with Canvas2D',
+      title: 'Letter Murmuration · v6',
+      hud: {
+        region: 'Letter flock controls', toggle: 'Collapse or expand the panel', volumeRow: 'Text volume',
+        behaviour: 'Behaviour', search: 'Neighbour search', bodies: 'Letter bodies', solid: 'Volume and mass',
+        ghosts: 'Ghosts', predator: 'Predator in murmuration', falcon: 'Hunting falcon', none: 'None',
+        weapon: 'Hero weapon', gun: 'Dot gun', off: 'Off', revive: 'Revive shot', tune: 'Dynamics settings',
+        note: 'View range: big letters see further than the base radius, small ones less. Horde speed is multiplied by the glyph\'s lightness.',
+        reset: 'Reset settings', fps: 'fps', rules: 'rules', bodiesStat: 'bodies', total: 'letters total',
+        flying: 'in flight', draw: 'drawing', nb: 'neighbours ⌀', contacts: 'contacts ⌀', overlap: 'overlap ⌀',
+        waiting: 'waiting to fly', obstacles: 'obstacles', budget: 'Frame budget 16.7 ms at 60 fps',
+      },
+    },
+    ru: {
+      locale: 'ru-RU', dec: ',',
+      unit: { step: 'px/шаг', px: 'px', s: 'с', perS: 'в с', ms: 'мс', mln: 'млн', bln: 'млрд' },
+      tune: {
+        HORDE_SPEED: 'Базовая скорость орды', ZOMBIE_SIGHT: 'Обзор зомби', FLY_CRUISE: 'Скорость птиц',
+        FALCON_R: 'Испуг от сокола', K: 'Соседей (K)', WAVE_SPEED: 'Волна взлёта',
+        HORDE_REACT: 'Реакция зомби', OB_MARGIN: 'Отступ птиц от картинок', FIRE_RATE: 'Скорострельность',
+        BULLET_SPEED: 'Скорость пуль',
+      },
+      seeAll: 'видят всех',
+      modes: { rest: 'Покой', flock: 'Мурмурация', horde: 'Орда' },
+      algos: { straight: 'По прямой', naive: 'Все пары O(N²)', grid: 'Сетка', gridK: 'Сетка + 7 соседей' },
+      hints: {
+        rest: 'Проведите курсором по строкам: буквы вспорхнут и вернутся. Клик даёт взрывную волну.',
+        flock: 'Стая кружит над гнездовьем и сама затевает развороты. Сокол-охотник атакует сам, курсор — второй сокол: птицы уходят с его пути, тревога бежит по стае волной. Картинки — препятствия.',
+        horde: 'Курсор стал героем. Зомби замечают его в радиусе обзора и реагируют каждый со своей задержкой, остальные бродят, пока их не увлечёт толпа. Точки и запятые бегут быстрее, великаны — медленнее всех. Клик отбрасывает.',
+      },
+      naiveSwitched: (n, pairs) => `Все пары для ${n} букв — это ${pairs} проверок за кадр, вкладка зависнет. Переключил на сетку + 7 соседей.`,
+      naiveFlight: (n) => `В полёт поднимутся ${n} букв: перебор всех пар не потянет. Включил сетку + 7 соседей.`,
+      naiveRefused: (n, pairs) => `Все пары для ${n} букв — это ${pairs} проверок за кадр, вкладка зависнет. Уменьшите текст или выберите сетку.`,
+      react: { horde: 'в погоне', flock: 'в панике', rest: 'реагируют' },
+      noWebGL: 'LetterSwarm: WebGL2 недоступен, рисую через Canvas2D',
+      title: 'Мурмурация букв · v6',
+      hud: {
+        region: 'Управление стаей букв', toggle: 'Свернуть или развернуть панель', volumeRow: 'Объём текста',
+        behaviour: 'Поведение', search: 'Поиск соседей', bodies: 'Тела букв', solid: 'С объёмом и массой',
+        ghosts: 'Призраки', predator: 'Хищник в мурмурации', falcon: 'Сокол-охотник', none: 'Нет',
+        weapon: 'Оружие героя', gun: 'Точкомёт', off: 'Выкл', revive: 'Вернуть сбитые', tune: 'Настройки динамики',
+        note: 'Обзор: крупные буквы видят дальше базового радиуса, мелкие — ближе. Скорость орды умножается на лёгкость знака.',
+        reset: 'Сбросить настройки', fps: 'кадров/с', rules: 'правила', bodiesStat: 'тела', total: 'букв всего',
+        flying: 'в полёте', draw: 'отрисовка', nb: 'соседей ⌀', contacts: 'касаний ⌀', overlap: 'вдавливание ⌀',
+        waiting: 'ждут взлёта', obstacles: 'препятствий', budget: 'Бюджет кадра 16,7 мс при 60 кадрах/с',
+      },
+    },
+  };
+  let T = I18N.en;
+
+  // ползунки панели: ключ CFG, мин, макс, шаг, единицы (ключ в T.unit); подписи — в T.tune
   const TUNABLES = [
-    ['HORDE_SPEED', 'Базовая скорость орды', 0.5, 8, 0.1, 'px/шаг'],
-    ['ZOMBIE_SIGHT', 'Обзор зомби', 40, 2000, 10, 'px'],
-    ['FLY_CRUISE', 'Скорость птиц', 1.5, 8, 0.1, 'px/шаг'],
-    ['FALCON_R', 'Испуг от сокола', 40, 400, 5, 'px'],
-    ['K', 'Соседей (K)', 1, 20, 1, ''],
-    ['WAVE_SPEED', 'Волна взлёта', 4, 80, 1, 'px/шаг'],
-    ['HORDE_REACT', 'Реакция зомби', 0, 1.5, 0.05, 'с'],
-    ['OB_MARGIN', 'Отступ птиц от картинок', 0, 100, 2, 'px'],
-    ['FIRE_RATE', 'Скорострельность', 2, 240, 1, 'в с'],
-    ['BULLET_SPEED', 'Скорость пуль', 4, 40, 1, 'px/шаг'],
+    ['HORDE_SPEED', 0.5, 8, 0.1, 'step'],
+    ['ZOMBIE_SIGHT', 40, 2000, 10, 'px'],
+    ['FLY_CRUISE', 1.5, 8, 0.1, 'step'],
+    ['FALCON_R', 40, 400, 5, 'px'],
+    ['K', 1, 20, 1, ''],
+    ['WAVE_SPEED', 4, 80, 1, 'step'],
+    ['HORDE_REACT', 0, 1.5, 0.05, 's'],
+    ['OB_MARGIN', 0, 100, 2, 'px'],
+    ['FIRE_RATE', 2, 240, 1, 'perS'],
+    ['BULLET_SPEED', 4, 40, 1, 'step'],
   ];
   const TUNE_DEFAULTS = {};
   TUNABLES.forEach(([k]) => { TUNE_DEFAULTS[k] = CFG[k]; });
-  const fmtTune = (k, v) => k === 'ZOMBIE_SIGHT' && v >= 1990 ? 'видят всех'
-    : (Math.round(v * 10) / 10).toString().replace('.', ',') + (TUNABLES.find((t) => t[0] === k)[5] ? ' ' + TUNABLES.find((t) => t[0] === k)[5] : '');
+  const fmtTune = (k, v) => {
+    if (k === 'ZOMBIE_SIGHT' && v >= 1990) return T.seeAll;
+    const u = TUNABLES.find((t) => t[0] === k)[4];
+    return fmtDec(Math.round(v * 10) / 10) + (u ? ' ' + T.unit[u] : '');
+  };
   const OFF_C = [0, -1, 1, 0, 0, -1, 1, -1, 1];
   const OFF_R = [0, 0, 0, -1, 1, -1, -1, 1, 1];
 
-  const MODES = [
-    ['rest', 'Покой', '1'],
-    ['flock', 'Мурмурация', '2'],
-    ['horde', 'Орда', '3'],
-  ];
-  const ALGOS = [
-    ['straight', 'По прямой'],
-    ['naive', 'Все пары O(N²)'],
-    ['grid', 'Сетка'],
-    ['gridK', 'Сетка + 7 соседей'],
-  ];
-  const HINTS = {
-    rest: 'Проведите курсором по строкам: буквы вспорхнут и вернутся. Клик даёт взрывную волну.',
-    flock: 'Стая кружит над гнездовьем и сама затевает развороты. Сокол-охотник атакует сам, курсор — второй сокол: птицы уходят с его пути, тревога бежит по стае волной. Картинки — препятствия.',
-    horde: 'Курсор стал героем. Зомби замечают его в радиусе обзора и реагируют каждый со своей задержкой, остальные бродят, пока их не увлечёт толпа. Точки и запятые бегут быстрее, великаны — медленнее всех. Клик отбрасывает.',
-  };
+  const MODES = [['rest', '1'], ['flock', '2'], ['horde', '3']];
+  const ALGOS = [['straight'], ['naive'], ['grid'], ['gridK']];
 
   function start(root, userOpts) {
     const opts = Object.assign({
@@ -97,12 +160,15 @@
       multiplier: 1,
       onMultiplier: null,
       accent: '#8c2f39',
-      title: 'Мурмурация букв · v6',
+      lang: 'en',              // язык панели: 'en' или 'ru'
+      title: null,             // по умолчанию — из словаря языка
       volume: true,
       weapon: false,
       wildFalcon: true,
       ink: '#1c1922',
     }, userOpts || {});
+    T = I18N[opts.lang] || I18N.en;
+    if (!opts.title) opts.title = T.title;
     root = root || document.body;
     const doc = document;
 
@@ -710,7 +776,7 @@
       activeCount = n;
       if (!n) { nbAvg = 0; contactsAvg = 0; overlapAvg = 0; WF.present = false; particlesStep(); return; }
       if (algo === 'naive' && n > CFG.NAIVE_LIMIT) {
-        toast(`Все пары для ${fmtInt(n)} букв — это ${fmtBig(n * n)} проверок за кадр, вкладка зависнет. Переключил на сетку + 7 соседей.`);
+        toast(T.naiveSwitched(fmtInt(n), fmtBig(n * n)));
         setAlgo('gridK', true);
       }
       const t0 = performance.now();
@@ -1555,7 +1621,7 @@
       if (m === mode) return;
       if ((m === 'flock' || m === 'horde') && algo === 'naive' && N > CFG.NAIVE_LIMIT) {
         setAlgo('gridK', true);
-        toast(`В полёт поднимутся ${fmtInt(N)} букв: перебор всех пар не потянет. Включил сетку + 7 соседей.`);
+        toast(T.naiveFlight(fmtInt(N)));
       }
       const prev = mode;
       mode = m;
@@ -1586,7 +1652,7 @@
       if (a === 'naive') {
         const n = mode === 'rest' ? activeCount : N;
         if (n > CFG.NAIVE_LIMIT) {
-          toast(`Все пары для ${fmtInt(n)} букв — это ${fmtBig(n * n)} проверок за кадр, вкладка зависнет. Уменьшите текст или выберите сетку.`);
+          toast(T.naiveRefused(fmtInt(n), fmtBig(n * n)));
           return;
         }
       }
@@ -1651,10 +1717,10 @@
           b.classList.toggle('on', on);
           if (b.dataset.g !== 'min' && b.dataset.g !== 'revive') b.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
-        $('.hint').textContent = HINTS[mode];
+        $('.hint').textContent = T.hints[mode];
       }
       $('#fps').textContent = Math.round(fpsE);
-      $('#rlbl').textContent = mode === 'horde' ? 'в погоне' : mode === 'flock' ? 'в панике' : 'реагируют';
+      $('#rlbl').textContent = T.react[mode];
       $('#rc').textContent = mode === 'rest' || !activeCount ? '—' : fmtInt(reactCount);
       $('#pw').textContent = fmtInt(pendingWakes);
       $('#obn').textContent = fmtInt(OBN);
@@ -1666,9 +1732,9 @@
       $('#tot').textContent = fmtInt(N);
       $('#act').textContent = fmtInt(activeCount);
       $('#rnd').textContent = glr && !glr.lost ? 'WebGL2' : 'Canvas2D';
-      $('#nb').textContent = activeCount && algo !== 'straight' ? nbAvg.toFixed(1).replace('.', ',') : '—';
-      $('#ct').textContent = volume && activeCount ? contactsAvg.toFixed(1).replace('.', ',') : '—';
-      $('#ov').textContent = volume && activeCount ? overlapAvg.toFixed(2).replace('.', ',') + ' px' : '—';
+      $('#nb').textContent = activeCount && algo !== 'straight' ? fmtDec(nbAvg.toFixed(1)) : '—';
+      $('#ct').textContent = volume && activeCount ? fmtDec(contactsAvg.toFixed(1)) : '—';
+      $('#ov').textContent = volume && activeCount ? fmtDec(overlapAvg.toFixed(2)) + ' px' : '—';
       const budget = CFG.STEP_MS;
       const ws = Math.min(100, steerE / budget * 100);
       const wc = Math.min(100 - ws, (volume ? collE : 0) / budget * 100);
@@ -1765,7 +1831,7 @@
       gl.linkProgram(prog);
       if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
     } catch (e) {
-      console.warn('LetterSwarm: WebGL2 недоступен, рисую через Canvas2D', e);
+      console.warn(T.noWebGL, e);
       return null;
     }
     const U = (n) => gl.getUniformLocation(prog, n);
@@ -1831,19 +1897,21 @@
     };
   }
 
-  function fmtInt(n) { return Math.round(n).toLocaleString('ru-RU'); }
-  function fmtMs(ms) { return ms.toFixed(1).replace('.', ',') + ' мс'; }
+  function fmtInt(n) { return Math.round(n).toLocaleString(T.locale); }
+  function fmtDec(v) { return String(v).replace('.', T.dec); }
+  function fmtMs(ms) { return fmtDec(ms.toFixed(1)) + ' ' + T.unit.ms; }
   function fmtBig(n) {
-    if (n >= 1e9) return (n / 1e9).toFixed(1).replace('.', ',') + ' млрд';
-    if (n >= 1e6) return Math.round(n / 1e6) + ' млн';
+    if (n >= 1e9) return fmtDec((n / 1e9).toFixed(1)) + ' ' + T.unit.bln;
+    if (n >= 1e6) return Math.round(n / 1e6) + ' ' + T.unit.mln;
     return fmtInt(n);
   }
 
   function hudMarkup(opts) {
-    const seg = (g, list) => list.map(([v, label, key]) =>
-      `<button type="button" data-g="${g}" data-v="${v}" aria-pressed="false">${key ? `<kbd>${key}</kbd>` : ''}${label}</button>`).join('');
+    const H = T.hud;
+    const seg = (g, list, labels) => list.map(([v, key]) =>
+      `<button type="button" data-g="${g}" data-v="${v}" aria-pressed="false">${key ? `<kbd>${key}</kbd>` : ''}${labels[v]}</button>`).join('');
     const mult = opts.multipliers ? `
-      <div class="row"><span class="lbl">Объём текста</span><div class="seg">${
+      <div class="row"><span class="lbl">${H.volumeRow}</span><div class="seg">${
         opts.multipliers.map((k) => `<button type="button" data-g="mult" data-v="${k}" aria-pressed="false">×${k}</button>`).join('')
       }</div></div>` : '';
     return `<style>
@@ -1902,49 +1970,49 @@
       .toast[hidden] { display: none; }
       @media (prefers-reduced-motion: reduce) { button { transition: none; } }
     </style>
-    <div class="hud" role="region" aria-label="Управление стаей букв">
+    <div class="hud" role="region" aria-label="${H.region}">
       <div class="top"><b>${opts.title}</b>
-        <button type="button" class="min" data-g="min" aria-expanded="true" aria-label="Свернуть или развернуть панель">–</button></div>
+        <button type="button" class="min" data-g="min" aria-expanded="true" aria-label="${H.toggle}">–</button></div>
       <div class="body">
-        <div class="row"><span class="lbl">Поведение</span><div class="seg">${seg('mode', MODES)}</div></div>
-        <div class="row"><span class="lbl">Поиск соседей</span><div class="seg">${seg('algo', ALGOS)}</div></div>
-        <div class="row"><span class="lbl">Тела букв</span><div class="seg">
-          <button type="button" data-g="vol" data-v="1" aria-pressed="false"><kbd>V</kbd>С объёмом и массой</button>
-          <button type="button" data-g="vol" data-v="0" aria-pressed="false">Призраки</button></div></div>
-        <div class="row"><span class="lbl">Хищник в мурмурации</span><div class="seg">
-          <button type="button" data-g="wf" data-v="1" aria-pressed="false"><kbd>H</kbd>Сокол-охотник</button>
-          <button type="button" data-g="wf" data-v="0" aria-pressed="false">Нет</button></div></div>
-        <div class="row"><span class="lbl">Оружие героя</span><div class="seg">
-          <button type="button" data-g="gun" data-v="1" aria-pressed="false"><kbd>F</kbd>Точкомёт</button>
-          <button type="button" data-g="gun" data-v="0" aria-pressed="false">Выкл</button>
-          <button type="button" data-g="revive" id="revive" disabled>Вернуть сбитые · <span id="kills">0</span></button></div></div>
+        <div class="row"><span class="lbl">${H.behaviour}</span><div class="seg">${seg('mode', MODES, T.modes)}</div></div>
+        <div class="row"><span class="lbl">${H.search}</span><div class="seg">${seg('algo', ALGOS, T.algos)}</div></div>
+        <div class="row"><span class="lbl">${H.bodies}</span><div class="seg">
+          <button type="button" data-g="vol" data-v="1" aria-pressed="false"><kbd>V</kbd>${H.solid}</button>
+          <button type="button" data-g="vol" data-v="0" aria-pressed="false">${H.ghosts}</button></div></div>
+        <div class="row"><span class="lbl">${H.predator}</span><div class="seg">
+          <button type="button" data-g="wf" data-v="1" aria-pressed="false"><kbd>H</kbd>${H.falcon}</button>
+          <button type="button" data-g="wf" data-v="0" aria-pressed="false">${H.none}</button></div></div>
+        <div class="row"><span class="lbl">${H.weapon}</span><div class="seg">
+          <button type="button" data-g="gun" data-v="1" aria-pressed="false"><kbd>F</kbd>${H.gun}</button>
+          <button type="button" data-g="gun" data-v="0" aria-pressed="false">${H.off}</button>
+          <button type="button" data-g="revive" id="revive" disabled>${H.revive} · <span id="kills">0</span></button></div></div>
         ${mult}
-        <details class="tune"><summary>Настройки динамики</summary>
-          <div class="tunes">${TUNABLES.map(([k, label, min, max, st]) => `
-            <label class="sl" for="t-${k}"><span>${label}</span><b id="v-${k}"></b>
+        <details class="tune"><summary>${H.tune}</summary>
+          <div class="tunes">${TUNABLES.map(([k, min, max, st]) => `
+            <label class="sl" for="t-${k}"><span>${T.tune[k]}</span><b id="v-${k}"></b>
               <input type="range" id="t-${k}" data-k="${k}" min="${min}" max="${max}" step="${st}"></label>`).join('')}
           </div>
-          <p class="note">Обзор: крупные буквы видят дальше базового радиуса, мелкие — ближе. Скорость орды умножается на лёгкость знака.</p>
-          <button type="button" data-g="tune-reset">Сбросить настройки</button>
+          <p class="note">${H.note}</p>
+          <button type="button" data-g="tune-reset">${H.reset}</button>
         </details>
         <div class="stats">
-          <div><span>кадров/с</span><b id="fps">—</b></div>
-          <div><span>правила</span><b id="st">—</b></div>
-          <div><span>тела</span><b id="co">—</b></div>
-          <div><span>букв всего</span><b id="tot">—</b></div>
-          <div><span>в полёте</span><b id="act">—</b></div>
-          <div><span>отрисовка</span><b id="drw">—</b></div>
-          <div><span>соседей ⌀</span><b id="nb">—</b></div>
-          <div><span>касаний ⌀</span><b id="ct">—</b></div>
-          <div><span>вдавливание ⌀</span><b id="ov">—</b></div>
-          <div><span id="rlbl">реагируют</span><b id="rc">—</b></div>
-          <div><span>ждут взлёта</span><b id="pw">—</b></div>
-          <div><span>препятствий</span><b id="obn">—</b></div>
+          <div><span>${H.fps}</span><b id="fps">—</b></div>
+          <div><span>${H.rules}</span><b id="st">—</b></div>
+          <div><span>${H.bodiesStat}</span><b id="co">—</b></div>
+          <div><span>${H.total}</span><b id="tot">—</b></div>
+          <div><span>${H.flying}</span><b id="act">—</b></div>
+          <div><span>${H.draw}</span><b id="drw">—</b></div>
+          <div><span>${H.nb}</span><b id="nb">—</b></div>
+          <div><span>${H.contacts}</span><b id="ct">—</b></div>
+          <div><span>${H.overlap}</span><b id="ov">—</b></div>
+          <div><span id="rlbl">${T.react.rest}</span><b id="rc">—</b></div>
+          <div><span>${H.waiting}</span><b id="pw">—</b></div>
+          <div><span>${H.obstacles}</span><b id="obn">—</b></div>
         </div>
         <div class="budget">
-          <span>Бюджет кадра 16,7 мс при 60 кадрах/с · <em id="rnd"></em></span>
+          <span>${H.budget} · <em id="rnd"></em></span>
           <div class="bar"><i id="bsim"></i><i id="bcol"></i><i id="bdrw"></i></div>
-          <div class="legend"><span><i style="background:var(--acc2)"></i>правила</span><span><i style="background:#8cc7a1"></i>тела</span><span><i style="background:#8fb3d9"></i>отрисовка</span></div>
+          <div class="legend"><span><i style="background:var(--acc2)"></i>${H.rules}</span><span><i style="background:#8cc7a1"></i>${H.bodiesStat}</span><span><i style="background:#8fb3d9"></i>${H.draw}</span></div>
         </div>
         <div class="hint"></div>
         <div class="toast" role="status" hidden></div>
